@@ -1,0 +1,26 @@
+/* all webflow css classes */
+
+.merriweather_lg {
+    font-family: Merriweather, serif;
+    color: #000;
+    font-size: 45px;
+    line-height: 53px;
+    font-weight: 900;
+  }
+  
+  .merriweather_md {
+    font-family: Merriweather, serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+  
+  .merriweather_sm {
+    padding-bottom: 0px;
+    padding-left: 10px;
+    font-family: Merriweather, serif;
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  
