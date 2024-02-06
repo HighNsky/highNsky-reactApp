@@ -16518,6 +16518,12 @@ input[type="checkbox"]:checked {
   }
 }
 
+/* @media screen and (max-width: 320px) {
+  .about-section {
+    padding-bottom: 0px !important;
+  }
+} */
+
 #w-node-_61af3c0c-1491-4165-af83-d7ab73a1a714-ff0afb5e {
   -ms-grid-column-span: 1;
   grid-column-end: 3;

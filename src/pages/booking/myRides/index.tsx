@@ -38,9 +38,9 @@ const MyRides = () => {
   // const url = `http://localhost:5001/api/passenger/getAllBookedRides/ride?email=${emailz}`;
   useEffect(() => {
     if (div) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "scroll";
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = "scroll";
     }
   }, [div]);
   useEffect(() => {

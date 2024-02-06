@@ -24,15 +24,14 @@ const Header = () => {
   const [open, setOpen] = useAtom(changeNavColor);
   console.log('open', open)
   const [user, setUser] = useAtom(meUser);
-  meUser;
-  useEffect(() => {
-    if (nav) {
-      document.body.style.overflow = "hidden";
-    } 
-    // else {
-    //   document.body.style.overflow = "scroll";
-    // }
-  }, [nav]);
+  // useEffect(() => {
+  //   if (nav) {
+  //     document.body.style.overflow = "hidden";
+  //   } 
+  //   // else {
+  //   //   document.body.style.overflow = "scroll";
+  //   // }
+  // }, [nav]);
 
 
   // useEffect(() => {
