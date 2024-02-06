@@ -29,7 +29,7 @@ const SelectCars = () => {
   }
   const {
     data: getOption,
-    refatch,
+    // refatch,
     isLoading,
   }: any = useGetVehicleOption({
     query: {
