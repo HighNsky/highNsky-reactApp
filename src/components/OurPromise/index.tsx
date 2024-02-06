@@ -42,7 +42,7 @@ const OurPromise = () => {
           whileHover={{ border: "2px solid #e0b34e   ", scale: 1.1 }}
           whileTap={{ border: "2px solid #e0b34e", scale: 0.9 }}
           transition={{ duration: 0.2 }}
-          className=" border-2   border-[#e0b34e] xxxs:h-fit md:h-[25rem]  w-[100%] rounded-md mx-auto"
+          className=" border-2   border-[#e0b34e] xxxs:h-fit md:h-[100%]  w-[100%] rounded-md mx-auto"
         >
           <div className="p-4 py-10 flex justify-center">
             {/* <h1 className="heading-291">No hidden fees</h1> */}

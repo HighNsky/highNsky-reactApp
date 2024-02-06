@@ -37,9 +37,9 @@ const Cars = () => {
   }
   return (
     <div>
-      <div className="meetcarsection">
+      <div className=" my-8">
         <div className="xs:mx-[10%] lg:mx-[5%] 2xl:mx-[15%]">
-          <h1 className="heading-7227 mb-16">Choose vehicles  </h1>
+          <h1 className="heading-7227 mb-10">Choose vehicles </h1>
 
           {isLoading && (
             <div className="lg:grid-cols-2 xl:grid-cols-3 grid md:grid-cols-2 sm:grid-cols-1 gap-2 ">
@@ -63,9 +63,9 @@ const Cars = () => {
             <div className="lg:grid-cols-2 xl:grid-cols-3 grid md:grid-cols-2 sm:grid-cols-1 gap-2">
               {ThreeVehicleData?.map((item: any) => (
                 <>
-                  <div className="flex px-3 mb-6" key={item.id}>
-                    <div className="border rounded-b-3xl drop-shadow-xl bg-white">
-                      <div className=" h-[10%]">
+                  <div className="flex   mb-6 " key={item.id}>
+                    <div className="border rounded-b-3xl drop-shadow-xl bg-white w-[90%] ">
+                      <div className=" ">
                         <div
                           className={
                             item?.availability === true
@@ -84,13 +84,13 @@ const Cars = () => {
                             </p>
                           )}
                         </div>
-                        <div className="w-[70%] font-serif italic font-semibold  2xl:text-2xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl  text-[#333333] pl-4 py-2">
+                        <div className="w-[65%] font-serif italic font-semibold  2xl:text-2xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl  text-[#333333] pl-4 py-2">
                           {item?.vehicleName}
                         </div>
                       </div>
 
-                      <div className="flex  px-4 ">
-                        <div className="w-full h-full">
+                      <div className="flex  px-4 gap-3 ">
+                        <div className="w-[90%] h-[90%]">
                           <div
                             className={`${Styles?.imageBox} `}
                             // onClick={() => router.push(`/product/${id}`)}
@@ -99,11 +99,13 @@ const Cars = () => {
                               <img
                                 src={item?.vehicleImage?.url}
                                 alt="img"
+
                                 // layout="fill"
                               />
                             ) : null}
                           </div>
-                          {/* <div className="relative w-68 h-44 px-4 ">
+                        </div>
+                        {/* <div className="relative w-68 h-44 px-4 ">
                             <Image
                               src={item?.vehicleImage?.url}
                               loading="lazy"
@@ -112,8 +114,8 @@ const Cars = () => {
                               alt=""
                               className=" rounded object-fill"
                             />
-                          </div> */}
-                        </div>
+                         </div>
+                      
 
                         {/* <div className="w-full h-full">
                           <div className="relative w-68 h-44 px-4  ">
@@ -167,6 +169,7 @@ const Cars = () => {
                         </div>
                       </div>
                       <div className="flex justify-between  md:px-3  pb-2 px-3">
+                        <div>
                         <Button
                           onClick={() => {
                             setLoading(true);
@@ -190,12 +193,11 @@ const Cars = () => {
                           {item?.availability === !true
                             ? "Coming Soon"
                             : "Book Now"}
-                        </Button>
+                        </Button></div>
                         <div className="place-self-center">
                           <div className="pr-[20px] md:text-sm 2xl:text-xl xl:text-xl flex text-[#333333] ">
                             <strong className=" font-semibold ">
-                              Price: $
-                              {item.price}
+                              Price: ${item.price}
                             </strong>
                             <div className="font-thin font-serif">
                               /{item?.priceTitle}
@@ -212,12 +214,12 @@ const Cars = () => {
           {ThreeVehicleData?.length === 0 || !ThreeVehicleData ? (
             " "
           ) : (
-            <div className="flex justify-center mb-10 mt-4">
+            <div className="flex justify-center   mt-4">
               <Button
                 onClick={() => {
                   router.push("/cars");
                 }}
-                className="button-211176 text-black mb-10"
+                className="button-211176 text-black  "
               >
                 More Now
               </Button>

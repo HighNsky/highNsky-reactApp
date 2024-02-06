@@ -212,7 +212,7 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
               value={pickupdate && new Date(pickupdate)}
               clearIcon={false}
               calendarIcon={false}
-              className="text-black rounded border-white bg-white p-[5px] h-[40px] w-[85%] mt-1.5"
+              className="text-black rounded border-white bg-white p-[5px] h-[40px] w-[100%] mt-1.5"
               onChange={(e: any) => {
                 let selectedPickupDate = moment(e).format("DD-MM-YYYY");
                 let selectedReturnDate =
@@ -344,7 +344,6 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
                 // Get the selected time
                 // Compare the selected time with the current time
 
-               
                 // if (
                 //   selectedHours < currentHours ||
                 //   (selectedHours === currentHours &&
@@ -362,7 +361,7 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
                 //     return { ...curr, pickuptime: "" };
                 //   });
                 // } else
-                 if (
+                if (
                   ![selectedPickupDate, selectedReturnDate]?.includes(
                     "Invalid date"
                   )
@@ -434,11 +433,11 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
               clearIcon={false}
               calendarIcon={false}
               value={returndate && new Date(returndate)}
-              className="text-black rounded border-white bg-white p-[5px] h-[40px] w-[85%] mt-1.5"
+              className="text-black rounded border-white bg-white p-[5px] h-[40px] w-[100%] mt-1.5"
               onChange={(e: any) => {
-                let selectedPickupDate = moment(pickupdate).format("DD-MM-YYYY");
-                let selectedReturnDate =
-                  moment(e).format("DD-MM-YYYY");
+                let selectedPickupDate =
+                  moment(pickupdate).format("DD-MM-YYYY");
+                let selectedReturnDate = moment(e).format("DD-MM-YYYY");
                 if (pickupdate) {
                   if (moment(pickupdate).isAfter(moment(e))) {
                     setFormErrors((curr: any) => {
@@ -581,7 +580,10 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
                             "Please select a time later than the pick up time.",
                         };
                       });
-                      setFormFields((curr: any) => ({ ...curr, 'returntime': "" }));
+                      setFormFields((curr: any) => ({
+                        ...curr,
+                        returntime: "",
+                      }));
                     } else {
                       // Clear the error message
                       setFormErrors((curr: any) => {

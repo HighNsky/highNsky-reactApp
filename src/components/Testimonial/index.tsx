@@ -77,7 +77,7 @@ const Testimonial = () => {
           <Image src={left} alt="" />
         </div>
         <div className="">
-          <h1 className=" xxxs:text-2xl md:text-4xl font-serif font-bold text-center p-16 text-white">
+          <h1 className=" xxxs:text-2xl md:text-4xl font-serif font-bold text-center pt-10 text-white">
             TESTIMONIALS
           </h1>
         </div>
