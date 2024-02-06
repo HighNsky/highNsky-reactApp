@@ -1,0 +1,9 @@
+.lineSimmerLoading{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    background-color: aliceblue;
+    /* border:0.2px solid rgb(199, 184, 184); */
+    
+    box-shadow: 20px 20px 40px rgb(226, 227, 228);
+}
