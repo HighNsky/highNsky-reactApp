@@ -47,30 +47,30 @@ const Header = () => {
   // }, [open]);
 
 
-  useEffect(() => {
-    const Cid = localStorage.getItem("customerId");
+//   useEffect(() => {
+//     const Cid = localStorage.getItem("customerId");
     
-if (Cid) {
-  setCid(Cid);
-}
-}, []);
+// if (Cid) {
+//   setCid(Cid);
+// }
+// }, []);
 
-  useEffect(() => {
-    const callMe = () => {
-      if (cId) {
-      axios
-        .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
-        // .get((`http://localhost:5001/api/passenger/${cId}`)
-        // , {
-        //   headers: { Authorization: localStorage.getItem("accessToken") },
-        // }
-        )
-        ?.then((res) => {
-          setUser(res?.data)
-        });
-    };}
-    callMe()
-  }, [cId]);
+//   useEffect(() => {
+//     const callMe = () => {
+//       if (cId) {
+//       axios
+//         .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
+//         // .get((`http://localhost:5001/api/passenger/${cId}`)
+//         // , {
+//         //   headers: { Authorization: localStorage.getItem("accessToken") },
+//         // }
+//         )
+//         ?.then((res) => {
+//           setUser(res?.data)
+//         });
+//     };}
+//     callMe()
+//   }, [cId]);
 
   
   const removeOnlineBookLocal = () => {
