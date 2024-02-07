@@ -37,7 +37,7 @@ const Layout = () => (
       className=" w-[100%] h-[45rem] 
 "
       src={carsi}
-      loading="lazy"
+      // loading="lazy"
       alt=""
     />
   </div>
@@ -223,18 +223,8 @@ const About = () => {
                     </AnimatePresence>
                   </div>
                   <div className="div-block-312757">
-                    <p className="paragraph-21 mr-5">
+                    <p className="paragraph-21 xxxs:text-center xxxs:mr-0 xxs:text-center sm:text-left lg:text-left xxs:mr-0 lg:mr-5">
                       {paraGraph?.tital}
-                      {/* HighNSky operates with the aim to provide clients with
-                      cost-effective and reliable car rental services. We make
-                      sure that you get a car rental experience that surpasses
-                      all your expectations. Whether it's helping you get along
-                      with the city or setting up your favorite radio station,
-                      our team is at your beck and call to help.Our local
-                      knowledge and experience provides something that you won't
-                      find elsewhere. We can guide you in planning your trip
-                      along the way. So what are you waiting for? Let's travel
-                      with confidence with High N Sky. */}
                     </p>
                   </div>
                   {/* <div className="button-div">
@@ -246,7 +236,7 @@ const About = () => {
                 <div className="image-wrapper">
                   <Image
                     src={ChaufferDriver}
-                    loading="lazy"
+                    // loading="lazy"
                     alt="chauffer"
                     className="px-4"
                   />
@@ -347,7 +337,7 @@ const About = () => {
         </div>
         {/* ====================section3======================================== */}
         <div>
-          <div className=" my-20 flex-col flex items-center lg:justify-center lg:flex lg:flex-row gap-5 md:px-[11rem] mx-auto">
+          <div className="xxxs:mt-0 xxs:mt-0 xs:mt-20 mt-20 mb-20 my-20 flex-col flex items-center lg:justify-center lg:flex lg:flex-row gap-5 md:px-[11rem] mx-auto">
             <div className="mt-10 ">
               <h1 className="mb-2 hover:text-black text-[#E0B34E] heading-7227 mb-[1.25rem]">
                 Our Promise
@@ -355,22 +345,22 @@ const About = () => {
               <motion.div
                 style={{
                   border: "2px solid black",
-                  padding: "1rem",
+                  // padding: "3rem",
                   marginTop: "2rem",
                 }}
                 whileHover={{ border: "2px solid #e0b34e   ", scale: 1.1 }}
                 whileTap={{ border: "2px solid #e0b34e", scale: 0.9 }}
                 transition={{ duration: 0.2 }}
-                className=" border-2   border-[#e0b34e] xxxs:h-fit md:h-[15rem] w-[100%] rounded-md mx-auto"
+                className=" border-2 xxxs:p-8 xxs:p-8 xs:p-12  border-[#e0b34e] xxxs:h-fit md:h-[15rem] w-[100%] rounded-md mx-auto"
               >
                 <div className="flex justify-center">
                   <Image
                     src={handshake}
                     // loading="lazy"
-                    width={230}
+                    width={220}
                     // height={200}
                     alt="chauffer"
-                    className="px-4"
+                    className="px-6"
                   />
                 </div>
                 <div className="text-center cp text-[16px]  pt-4 text-[#E0B34E] ">
@@ -408,9 +398,9 @@ const About = () => {
                     HIGHNSKY CAR RENTAL{" "}
                   </p>
 
-                  <span className="text-center cp text-[16px] text-[#E0B34E]">
+                  <p className="text-center cp text-[16px] text-[#E0B34E]">
                     Proudly empowered by repetitive loyal customers
-                  </span>
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -421,13 +411,13 @@ const About = () => {
               <motion.div
                 style={{
                   border: "2px solid black",
-                  padding: "1rem",
+                  // padding: "1rem",
                   marginTop: "2rem",
                 }}
                 whileHover={{ border: "2px solid #e0b34e   ", scale: 1.1 }}
                 whileTap={{ border: "2px solid #e0b34e", scale: 0.9 }}
                 transition={{ duration: 0.2 }}
-                className=" border-2   border-[#e0b34e] xxxs:h-fit md:h-[15rem]  w-[100%] rounded-md mx-auto"
+                className=" border-2  xxxs:p-1 xxs:p-1 xs:p-4 border-[#e0b34e] xxxs:h-fit md:h-[15rem]  w-[100%] rounded-md mx-auto"
               >
                 <div className="flex justify-center">
                   <Image
@@ -441,7 +431,7 @@ const About = () => {
                 </div>
 
                 <div className="paragraph-203 cp hover:text-[#E0B34E] ">
-                  <p className="cp text-[15px] text-[#E0B34E]">
+                  <p className="cp text-[16px] text-[#E0B34E]">
                     We pick up and drop off the vehicle to your location extra
                     charges may apply
                   </p>
@@ -623,8 +613,9 @@ const About = () => {
                                 <Image
                                   src={idx.img}
                                   // className="h-[70px] w-[100px]"
-                                  loading="lazy"
-                                  // height={1000}
+                                  // loading="lazy"
+                                  height={100}
+                                  width={100}
                                   alt=""
                                 />
                               </div>

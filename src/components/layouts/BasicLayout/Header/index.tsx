@@ -24,15 +24,14 @@ const Header = () => {
   const [open, setOpen] = useAtom(changeNavColor);
   console.log('open', open)
   const [user, setUser] = useAtom(meUser);
-  meUser;
-  useEffect(() => {
-    if (nav) {
-      document.body.style.overflow = "hidden";
-    } 
-    // else {
-    //   document.body.style.overflow = "scroll";
-    // }
-  }, [nav]);
+  // useEffect(() => {
+  //   if (nav) {
+  //     document.body.style.overflow = "hidden";
+  //   } 
+  //   // else {
+  //   //   document.body.style.overflow = "scroll";
+  //   // }
+  // }, [nav]);
 
 
   // useEffect(() => {
@@ -48,30 +47,30 @@ const Header = () => {
   // }, [open]);
 
 
-  useEffect(() => {
-    const Cid = localStorage.getItem("customerId");
+//   useEffect(() => {
+//     const Cid = localStorage.getItem("customerId");
     
-if (Cid) {
-  setCid(Cid);
-}
-}, []);
+// if (Cid) {
+//   setCid(Cid);
+// }
+// }, []);
 
-  useEffect(() => {
-    const callMe = () => {
-      if (cId) {
-      axios
-        .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
-        // .get((`http://localhost:5001/api/passenger/${cId}`)
-        // , {
-        //   headers: { Authorization: localStorage.getItem("accessToken") },
-        // }
-        )
-        ?.then((res) => {
-          setUser(res?.data)
-        });
-    };}
-    callMe()
-  }, [cId]);
+//   useEffect(() => {
+//     const callMe = () => {
+//       if (cId) {
+//       axios
+//         .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
+//         // .get((`http://localhost:5001/api/passenger/${cId}`)
+//         // , {
+//         //   headers: { Authorization: localStorage.getItem("accessToken") },
+//         // }
+//         )
+//         ?.then((res) => {
+//           setUser(res?.data)
+//         });
+//     };}
+//     callMe()
+//   }, [cId]);
 
   
   const removeOnlineBookLocal = () => {

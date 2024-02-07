@@ -210,11 +210,13 @@ const PaymentForm = () => {
     uploadLic: uploadLic,
     telephoneBill: telephoneBill,
   });
-  console.log("phone", phone);
   const handleFormFields = (e: any) => {
     const { value, name } = e.target;
-
-    setFormFields((curr: any) => ({ ...curr, [name]: value?.trim() }));
+    if (name === "address") {
+      setFormFields((curr: any) => ({ ...curr, [name]: value }));
+    } else {
+      setFormFields((curr: any) => ({ ...curr, [name]: value?.trim() }));
+    }
     if (name) {
       setFormErrors((curr: any) => ({ ...curr, [name]: "" }));
     }
@@ -267,7 +269,7 @@ const PaymentForm = () => {
       setFormFields((prv: any) => ({ ...prv, telephoneBill: "" }));
     }
   };
-  const clearUploadedStates=(name:any)=>{
+  const clearUploadedStates = (name: any) => {
     if (name === "uploadInsurance") {
       setDeleteFileInsurance([{ deleteData: "", saveData: "" }]);
       setUploadInsuranceDetail("");
@@ -281,7 +283,7 @@ const PaymentForm = () => {
       setUploadTelelDetail(""); // also clear preview image state
       setFormFields((prv: any) => ({ ...prv, telephoneBill: "" }));
     }
-  }
+  };
   const handleFormFieldsFile = (e: any) => {
     e.preventDefault();
 
@@ -326,7 +328,6 @@ const PaymentForm = () => {
         });
         // const fileInput = document.getElementById('fileInput');
         clearUploadedStates(name);
-        
       } else {
         setFormFields((curr: any) => ({
           ...curr,
@@ -434,85 +435,158 @@ const PaymentForm = () => {
 
       setFormErrors(errors);
 
+      /************************below code is signing up the guest user before creating ride************************************* */
+      /************Hide it due to the duplicate customer creation due to the unique email******** */
+      // if (
+      //   !errors.name &&
+      //   !errors.countryCode &&
+      //   !errors.email &&
+      //   !errors.phone
+      // ) {
+      //   singup
+      //     .mutateAsync({
+      //       body: {
+      //         email: email,
+      //         password: "123456",
+      //         name: firstName,
+      //         firstName,
+      //         lastName,
+      //         countryCode: "+61",
+      //         phone: phone,
+      //       },
+      //     })
+
+      //     .then((res: any) => {
+      //       window.localStorage.setItem("customerId", res?.data?._id);
+      //       formData.append("customerId", res?.data?._id);
+      //       if (
+      //         // !sigImage&&
+      //         !errors.licNo &&
+      //         !errors.electronicSignature &&
+      //         !errors.uploadInsurance &&
+      //         !errors.uploadLic &&
+      //         !errors.telephoneBill &&
+      //         !errors.address
+      //         //  &&
+      //         // totalP === true
+      //       ) {
+      //         setLoading(true);
+      //         bookRide
+      //           .mutateAsync({
+      //             body: formData,
+      //           })
+      //           .then((res: any) => {
+      //             window.sessionStorage.setItem("userRideId", res.data._id);
+      //             // setLoading(false);
+      //             if (typeof window !== "undefined") {
+      //               let rideid =
+      //                 window.sessionStorage.getItem("userRideId") ||
+      //                 res.data._id;
+
+      //               handleStripe({
+      //                 firstName: firstName,
+      //                 lastName: lastName,
+      //                 email: email,
+
+      //                 phoneNo: phone,
+      //                 address: address,
+      //                 licNo: licNo,
+      //                 pickupLocation: onlineBooking?.data?.pickUpLocation,
+      //                 pickupDate: onlineBooking?.pickUpDate,
+      //                 pickUpTime: onlineBooking?.pickUpTime,
+      //                 returnDate: onlineBooking?.returnDate,
+      //                 returnTime: onlineBooking?.returnTime,
+      //                 price: totaVehiclePrice,
+      //                 category: carPrice?.priceDetail?.priceTitle,
+      //                 capacity: carPrice?.priceDetail?.price,
+      //                 _id: rideid,
+      //                 // customerId:user?.data?._id,
+      //               });
+      //             }
+      //           })
+      //           .catch((err: any) => {
+      //             if (err) {
+      //               setLoading(false);
+      //             }
+      //           });
+      //       }
+
+      //       if (Object.keys(errors).length) {
+      //         return;
+      //       } else {
+      //         setFormFields({ ...initialValues });
+      //       }
+      //     })
+      //     .catch((error: any) => {});
+
+      //     if (Object.keys(errors).length) {
+      //       return;
+      //     } else {
+      //       setFormFields({ ...initialValues });
+      //     }
+      // }
+
+      /*************************************************************************************** */
+
       if (
+        // !sigImage&&
         !errors.name &&
         !errors.countryCode &&
         !errors.email &&
-        !errors.phone
+        !errors.phone &&
+        !errors.licNo &&
+        !errors.electronicSignature &&
+        !errors.uploadInsurance &&
+        !errors.uploadLic &&
+        !errors.telephoneBill &&
+        !errors.address
+        //  &&
+        // totalP === true
       ) {
-        singup
+        setLoading(true);
+        bookRide
           .mutateAsync({
-            body: {
-              email: email,
-              password: "123456",
-              name:firstName,
-              firstName,
-              lastName,
-              countryCode: "+61",
-              phone: phone,
-            },
+            body: formData,
           })
-
           .then((res: any) => {
-            window.localStorage.setItem("customerId", res?.data?._id);
-            formData.append("customerId", res?.data?._id);
-            if (
-              // !sigImage&&
-              !errors.licNo &&
-              !errors.electronicSignature &&
-              !errors.uploadInsurance &&
-              !errors.uploadLic &&
-              !errors.telephoneBill &&
-              !errors.address
-              //  &&
-              // totalP === true
-            ) {
-              setLoading(true);
-              bookRide
-                .mutateAsync({
-                  body: formData,
-                })
-                .then((res: any) => {
-                  window.sessionStorage.setItem("userRideId", res.data._id);
-                  // setLoading(false);
-                  if (typeof window !== "undefined") {
-                    let rideid = window.sessionStorage.getItem("userRideId");
+            window.sessionStorage.setItem("userRideId", res.data._id);
+            // setLoading(false);
+            if (typeof window !== "undefined") {
+              let rideid =
+                window.sessionStorage.getItem("userRideId") || res.data._id;
 
-                    handleStripe({
-                      firstName: firstName,
-                      lastName: lastName,
-                      email: email,
+              handleStripe({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
 
-                      phoneNo: phone,
-                      address: address,
-                      licNo: licNo,
-                      pickupLocation: onlineBooking?.data?.pickUpLocation,
-                      pickupDate: onlineBooking?.pickUpDate,
-                      pickUpTime: onlineBooking?.pickUpTime,
-                      returnDate: onlineBooking?.returnDate,
-                      returnTime: onlineBooking?.returnTime,
-                      price: totaVehiclePrice,
-                      category: carPrice?.priceDetail?.priceTitle,
-                      capacity: carPrice?.priceDetail?.price,
-                      _id: rideid,
-                      // customerId:user?.data?._id,
-                    });
-                  }
-                })
-                .catch((err: any) => {
-                  if (err) {
-                    setLoading(false);
-                  }
-                });
-            }
-
-            if (Object.keys(errors).length) {
-              return;
-            } else {
-              setFormFields({ ...initialValues });
+                phoneNo: phone,
+                address: address,
+                licNo: licNo,
+                pickupLocation: onlineBooking?.data?.pickUpLocation,
+                pickupDate: onlineBooking?.pickUpDate,
+                pickUpTime: onlineBooking?.pickUpTime,
+                returnDate: onlineBooking?.returnDate,
+                returnTime: onlineBooking?.returnTime,
+                price: totaVehiclePrice,
+                category: carPrice?.priceDetail?.priceTitle,
+                capacity: carPrice?.priceDetail?.price,
+                _id: rideid,
+                // customerId:user?.data?._id,
+              });
             }
           })
-          .catch((error: any) => {});
+          .catch((err: any) => {
+            if (err) {
+              setLoading(false);
+            }
+          });
+
+        if (Object.keys(errors).length) {
+          return;
+        } else {
+          setFormFields({ ...initialValues });
+        }
       }
     }
   };
@@ -533,7 +607,7 @@ const PaymentForm = () => {
     </div>
   );
 
-  console.log('uploadLicDetail?.url', uploadLicDetail?.url)
+  console.log("uploadLicDetail?.url", uploadLicDetail?.url);
   return (
     <BasicLayout>
       <div className="h-[30rem]">
@@ -724,28 +798,25 @@ const PaymentForm = () => {
 
                     {previewImage?.[0]?.uploadLicDoc && (
                       <div
-                      onClick={() =>
-                        setPreviewImage([{ teleDetailDoc: false }])
-                      }
-                      className=" fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden bg-black/30 outline-none backdrop-blur-sm focus:outline-none "
-                    >
-                      <div
-                        className="relative my-6 mx-4 w-full   md:mx-auto "
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={() =>
+                          setPreviewImage([{ teleDetailDoc: false }])
+                        }
+                        className=" fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden bg-black/30 outline-none backdrop-blur-sm focus:outline-none "
                       >
-                        <div className="relative h-[100%]    shadow-lg outline-none focus:outline-none ">
+                        <div
+                          className="relative my-6 mx-4 w-full   md:mx-auto "
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="relative h-[100%]    shadow-lg outline-none focus:outline-none ">
                             <iframe
-                           
                               src={uploadLicDetail?.url}
                               height="800px"
                               width="1600px"
-                            
                               // alt="profile"
                               allowFullScreen
                             />
                           </div>
-                          </div>
-                      
+                        </div>
                       </div>
                     )}
 
