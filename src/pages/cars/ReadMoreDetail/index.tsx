@@ -22,7 +22,7 @@ const ReadMoreDetail = () => {
   const [carPrice, setcarPrice]: any = useAtom(vehiclePrice);
   const [isAvailabilty, setIsAvailabilty]: any = useState("");
   const [isModal, setIsMOdal]: any = useState(false);
-  const [isAvailRes, setIsAvailRes]:any = useState("");
+  const [isAvailRes, setIsAvailRes]: any = useState("");
 
   const router = useRouter();
   const alreadyBooking: any = router.query.booking;
@@ -41,44 +41,44 @@ const ReadMoreDetail = () => {
   typeof localStorage! == "undefined" && typeof window !== "undefined"
     ? window.localStorage.setItem("carPrice", JSON.stringify(carPrice))
     : "";
-    const availabilty = useGetCheckAvailablity();
-    const available = ( ) => {
-      const availabiltyPicUpData = moment(
-        onlineBooking?.pickUpDate
-      ).toISOString();
-      const availabiltyReturnData = moment(
-        onlineBooking?.returnDate
-      ).toISOString();
-      const carId = vehicle?.data?._id;
-      if (carId && availabiltyPicUpData && availabiltyReturnData) {
-        setLoading(true)
-        availabilty
-          .mutateAsync({
-            pathParams: {
-              id: carId,
-            },
-            query: {
-              pickupDate: availabiltyPicUpData,
-              returnDate: availabiltyReturnData,
-            },
-          })
-          .then((res: any) => {
-            setIsAvailRes(res?.message)
-            setLoading(false)
-            if (res?.data) {
-              setIsAvailabilty(res);
-              setIsMOdal(true);
-            }
-            else{
-              if (res?.message) {
+  const availabilty = useGetCheckAvailablity();
+  const available = () => {
+    const availabiltyPicUpData = moment(
+      onlineBooking?.pickUpDate
+    ).toISOString();
+    const availabiltyReturnData = moment(
+      onlineBooking?.returnDate
+    ).toISOString();
+    const carId = vehicle?.data?._id;
+    if (carId && availabiltyPicUpData && availabiltyReturnData) {
+      setLoading(true);
+      availabilty
+        .mutateAsync({
+          pathParams: {
+            id: carId,
+          },
+          query: {
+            pickupDate: availabiltyPicUpData,
+            returnDate: availabiltyReturnData,
+          },
+        })
+        .then((res: any) => {
+          setIsAvailRes(res?.message);
+          setLoading(false);
+          if (res?.data) {
+            setIsAvailabilty(res);
+            setIsMOdal(true);
+          } else {
+            if (res?.message) {
               router.push(
                 // `/cars/SelectCars?id=${vehicle?.data?._id}
                 `/cars/SelectCars?id=${carId}`
-              )
-            }}
-          });
-      }
-    };
+              );
+            }
+          }
+        });
+    }
+  };
 
   return (
     <>
@@ -89,7 +89,8 @@ const ReadMoreDetail = () => {
             <div className="w-container xl:px-[18rem] lg:px-[3rem] sm:px-[0.01rem] ">
               <div className="hidden xl:block mt-10">
                 <div className="fleetdiv">
-                  <div className="div-block-312452">
+                  {/* <div className="div-block-312452"> */}
+                  <div className=" flex justify-between flex-col w-[40%]">
                     <motion.div
                       initial={{ x: 0, opacity: 1 }}
                       animate={{ x: 100, opacity: 1 }}
@@ -97,78 +98,79 @@ const ReadMoreDetail = () => {
                       className="div-block-312453 "
                     >
                       <h1 className="heading-7222">
-                        {vehicle?.data?.vehicleName}{" "}
+                        {vehicle?.data?.vehicleName}
                       </h1>
                     </motion.div>
-                    <motion.div
-                      initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: 100, opacity: 1 }}
-                      transition={{ duration: 0.7 }}
-                      className="div-block-312454"
-                    >
-                      <div className="div-block-312455">
-                        <div className="text-block-15454">
-                          <BiCategory />
+                                      <motion.div
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={{ x: 100, opacity: 1 }}
+                        transition={{ duration: 0.7 }}
+                        className="div-block-312454"
+                      >
+                        <div className="div-block-312455">
+                          <div className="text-block-15454">
+                            <BiCategory />
+                          </div>
                         </div>
-                      </div>
-                      <div className="div-block-312456">
-                        <h1 className="heading-7223">
-                          {vehicle?.data?.category}
-                        </h1>
-                      </div>
-                    </motion.div>
+                        <div className="div-block-312456">
+                          <h1 className="heading-7223">
+                            {vehicle?.data?.category}
+                          </h1>
+                        </div>
+                      </motion.div>
 
-                    <motion.div
-                      initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: 100, opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="div-block-312454"
-                    >
-                      <div className="div-block-312455">
-                        <div className="text-block-15454">
-                          <GiCarSeat />
+                      <motion.div
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={{ x: 100, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="div-block-312454"
+                      >
+                        <div className="div-block-312455">
+                          <div className="text-block-15454">
+                            <GiCarSeat />
+                          </div>
                         </div>
-                      </div>
-                      <div className="div-block-312456">
-                        <h1 className="heading-7223">
-                          {vehicle?.data?.seats} People
-                        </h1>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: 100, opacity: 1 }}
-                      transition={{ duration: 0.7 }}
-                      className="div-block-312454"
-                    >
-                      <div className="div-block-312455">
-                        <div className="text-block-15454">
-                          <BsFuelPumpFill />
+                        <div className="div-block-312456">
+                          <h1 className="heading-7223">
+                            {vehicle?.data?.seats} People
+                          </h1>
                         </div>
-                      </div>
-                      <div className="div-block-312456">
-                        <h1 className="heading-7223">
-                          {vehicle?.data?.fuelType}
-                        </h1>
-                      </div>
-                    </motion.div>
-                    <motion.div
-                      initial={{ x: 0, opacity: 1 }}
-                      animate={{ x: 100, opacity: 1 }}
-                      transition={{ duration: 0.7 }}
-                      className="div-block-312454"
-                    >
-                      <div className="div-block-312455">
-                        <div className="text-block-15454">
-                          <MdLuggage />
+                      </motion.div>
+                      <motion.div
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={{ x: 100, opacity: 1 }}
+                        transition={{ duration: 0.7 }}
+                        className="div-block-312454"
+                      >
+                        <div className="div-block-312455">
+                          <div className="text-block-15454">
+                            <BsFuelPumpFill />
+                          </div>
                         </div>
-                      </div>
-                      <div className="div-block-312456">
-                        <h1 className="heading-7223">
-                          {vehicle?.data?.luggageQuantity}
-                        </h1>
-                      </div>
-                    </motion.div>
+                        <div className="div-block-312456">
+                          <h1 className="heading-7223">
+                            {vehicle?.data?.fuelType}
+                          </h1>
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ x: 0, opacity: 1 }}
+                        animate={{ x: 100, opacity: 1 }}
+                        transition={{ duration: 0.7 }}
+                        className="div-block-312454"
+                      >
+                        <div className="div-block-312455">
+                          <div className="text-block-15454">
+                            <MdLuggage />
+                          </div>
+                        </div>
+                        <div className="div-block-312456">
+                          <h1 className="heading-7223">
+                            {vehicle?.data?.luggageQuantity}
+                          </h1>
+                        </div>
+                      </motion.div>
+                  
                   </div>
                   <motion.div
                     initial={{ x: 100, opacity: 1 }}
@@ -177,13 +179,14 @@ const ReadMoreDetail = () => {
                     className="div-block-312457 place-self-center"
                   >
                     {vehicle?.data?.vehicleImage?.url ? (
-                    <img
-                      src={vehicle?.data?.vehicleImage?.url}
-                      loading="lazy"
-                      width="636"
-                      height={0}
-                      alt=""
-                    />):null}
+                      <img
+                        src={vehicle?.data?.vehicleImage?.url}
+                        loading="lazy"
+                        width="636"
+                        height={0}
+                        alt=""
+                      />
+                    ) : null}
                   </motion.div>
                 </div>
                 <div className="">
@@ -294,18 +297,19 @@ const ReadMoreDetail = () => {
                   </div>
                   <div className="place-self-center">
                     {vehicle?.data?.vehicleImage?.url ? (
-                    <img
-                      src={vehicle?.data?.vehicleImage?.url}
-                      loading="lazy"
-                      width="800"
-                      height="100"
-                      alt=""
-                      className=" rounded object-fill"
-                      // loading="lazy"
-                      // width="636"
-                      // height={0}
-                      // alt=""
-                    />):null}
+                      <img
+                        src={vehicle?.data?.vehicleImage?.url}
+                        loading="lazy"
+                        width="800"
+                        height="100"
+                        alt=""
+                        className=" rounded object-fill"
+                        // loading="lazy"
+                        // width="636"
+                        // height={0}
+                        // alt=""
+                      />
+                    ) : null}
                   </div>
                 </div>
                 <div className="">
@@ -316,8 +320,7 @@ const ReadMoreDetail = () => {
                     <Button
                       className=""
                       onClick={() => {
-                        if (onlineBooking?.pickUpDate
-                          ) {
+                        if (onlineBooking?.pickUpDate) {
                           available();
                           // router.push(
                           //   `/cars/SelectCars?id=${vehicle?.data?._id}`
@@ -342,24 +345,46 @@ const ReadMoreDetail = () => {
           </div>
           {loading && <Loading />}
           {isModal && (
-        <div className="bg-gray-500 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none border">
-          <div className="relative  my-6 md:mx-auto mx-4 max-w-3xl w-full  ">
-            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
-              <div className="flex justify-center text-black font-semibold text-xl py-4 border-b">Vehicle <span className="text-red-600 px-2 text-xl ">Unavailable</span> on below date </div>
-               {isAvailabilty?.data?.map((item:any)=>
-                 ( <div className="text-black flex justify-center py-4" key={item}>
-               <div className="text-black font-semibold "><span className="text-xl ">From:</span>  {moment(item?.pickupDate).format("DD-MM-YYYY ")} </div>
-               <div className="text-black ml-4  font-semibold "><span className="text-xl ">To:</span> {moment(item?.returnDate).format("DD-MM-YYYY ")} </div>
-                 </div>
-                 )
-               )}
-              <div className="flex justify-center my-4">
-                <Button className="px-4" onClick={() => {setLoading(true),setIsMOdal(false); router.push(`/booknowform`);}}>ok</Button>
+            <div className="bg-gray-500 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none border">
+              <div className="relative  my-6 md:mx-auto mx-4 max-w-3xl w-full  ">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
+                  <div className="flex justify-center text-black font-semibold text-xl py-4 border-b">
+                    Vehicle{" "}
+                    <span className="text-red-600 px-2 text-xl ">
+                      Unavailable
+                    </span>{" "}
+                    on below date{" "}
+                  </div>
+                  {isAvailabilty?.data?.map((item: any) => (
+                    <div
+                      className="text-black flex justify-center py-4"
+                      key={item}
+                    >
+                      <div className="text-black font-semibold ">
+                        <span className="text-xl ">From:</span>{" "}
+                        {moment(item?.pickupDate).format("DD-MM-YYYY ")}{" "}
+                      </div>
+                      <div className="text-black ml-4  font-semibold ">
+                        <span className="text-xl ">To:</span>{" "}
+                        {moment(item?.returnDate).format("DD-MM-YYYY ")}{" "}
+                      </div>
+                    </div>
+                  ))}
+                  <div className="flex justify-center my-4">
+                    <Button
+                      className="px-4"
+                      onClick={() => {
+                        setLoading(true), setIsMOdal(false);
+                        router.push(`/booknowform`);
+                      }}
+                    >
+                      ok
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          )}
         </div>
       </BasicLayout>
     </>

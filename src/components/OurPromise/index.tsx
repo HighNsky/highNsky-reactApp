@@ -7,14 +7,14 @@ import { ImAirplane } from "react-icons/im";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 const OurPromise = () => {
   return (
-    <div className="w-[100%] py-20 ">
+    <div className="w-[100%] lg:py-20  xxxs:py-10">
       <div className="px-2">
         <h1 className="heading-7227 text-[#e0b34e]">Our Promise</h1>
         <h1 className="heading-291 my-5 ">
           No hidden fee, no unpleasant surprises
         </h1>
       </div>
-      <div className=" mt-14 grid xxxs:grid-cols-1 lg:grid-cols- mx-[2rem] sm:mx-[2rem] md:mx-[10rem] lg:mx-[8rem] 2xl:mx-[24rem]  gap-10  justify-items-center">
+      <div className=" mt-8 grid xxxs:grid-cols-1 lg:grid-cols- mx-[2rem] sm:mx-[1rem] xxs:mx-[1rem] md:mx-[1rem] lg:mx-[8rem] 2xl:mx-[24rem]  gap-10  justify-items-center">
         {/* <motion.div
           style={{ border: "2px solid black", padding: "1rem" }}
           whileHover={{
@@ -44,13 +44,13 @@ const OurPromise = () => {
           transition={{ duration: 0.2 }}
           className=" border-2   border-[#e0b34e] xxxs:h-fit md:h-[100%]  w-[100%] rounded-md mx-auto"
         >
-          <div className="p-4 py-10 flex justify-center">
+          <div className="flex justify-center">
             {/* <h1 className="heading-291">No hidden fees</h1> */}
             <ul className=" ">
               <div className="flex gap-6 ">
-                <li className=" h-4 w-4 mt-2 border-8 rounded-full border-[#e0b34e]"></li>
+                <li className="   h-4 w-4  mt-2   border-8 rounded-full border-[#e0b34e]"></li>
                 <li className="paragraph-21">
-                  <span className=" leading-normal font-semibold line-clamp-3">
+                  <span className=" leading-normal font-semibold line-clamp-3 ">
                     Renting a car should be simple and straight forward. At
                     HighNSky car rental, we tell you about all our rates and
                     charges upfront so you know what to pay. Local company,
@@ -125,20 +125,20 @@ const OurPromise = () => {
         </motion.div> */}
       </div>
       <div>
-        <div className="  border-red-500 md:mt-[5rem] ">
-          <div className="flex flex-row gap-6 justify-center xxxs:mt-10 p-6">
-            <ImAirplane
-              style={{ fontSize: "40", color: "#E0B34E", width: "100" }}
-              className="bg-yellow mt-2 "
-            />
+        <div className="  lg:mt-[20px] ">
+          <div className=" flex flex-row gap-6 justify-center p-6">
+            {/* <ImAirplane
+              style={{ fontSize: "40", color: "#E0B34E" }}
+              className="bg-yellow mt-2 lg-block md:hidden sm:hidden  "
+            /> */}
 
-            <div className=" text-5xl font-serif font-bold ">
+            <div className="  lg:text-[3rem] md:text-[3rem] sm:text-[2rem] xxxs:text-[2rem] xs:text-[1rem]   font-serif font-semibold ">
               Airport Services/ AirPort Pickup
             </div>
           </div>
 
-          <div className="flex xxxs:flex-col xl:flex-row  justify-center  xxxs:mx-4  2xl:mx-[6rem] xxxs:gap-20  my-10 items-center">
-            <div className="   bg-[#f3d271]   lg:left-[2rem] 2xl:left-[10rem]     lg:absolute z-[10] xxxs:w-[100%]   lg:w-[55%] 2xl:w-[56rem] xl:h-[40%] mx-auto">
+          <div className="flex xxxs:flex-col xl:flex-row  justify-center  xxxs:mx-4  2xl:mx-[6rem] xxxs:gap-10  2xl:my-10 md:my-0 items-center">
+            <div className="   bg-[#f3d271]   lg:left-[2rem] 2xl:left-[10rem]     lg:absolute z-[10] xxxs:w-[100%]   lg:w-[55%] 2xl:w-[56rem] xl:h-[40%] mx-auto pb-6">
               <div className="p-6 text-4xl font-serif font-semibold">
                 Why Hire Our Cars For Airport Services
               </div>

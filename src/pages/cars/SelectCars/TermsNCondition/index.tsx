@@ -58,7 +58,7 @@ const TermsNCondition = () => {
     <>
       <BasicLayout>
         <SubHeader text={Terms} />
-        <div className="flex justify-center items-center wf-section my-[40px] xxxs:px-16  xs:px-[100px] lg:px-[220px]">
+        <div className="flex justify-center items-center wf-section my-[40px] xxxs:px-16  xs:px-[100px] xl:px-[220px] lg:px-[110px] md:px-[10px] sm:px-[10px] xxxs:px-[10px]">
           <div>
             <div id="printablediv" ref={printRef} className="mx-8">
               <div className="mb-[40px]">
@@ -275,18 +275,18 @@ const TermsNCondition = () => {
               onSubmit={handleSubmit}
             >
               <label className=" flex gap-2 items-center">
-                  <Input
-                    // placeholder={"Last Name"}
-                    // label="Last Name*"
-                    type="checkbox"
-                    name="checkbox"
-                    className="text-[#F3D271] "
-                    value={checkbox}
-                    onChange={handleFormFields}
-                    // errorMessage={formErrors?.checkbox}
-                    style={{height:'8px', width:'12px', borderRadius:'100%'}}
-                  />
-             
+                <Input
+                  // placeholder={"Last Name"}
+                  // label="Last Name*"
+                  type="checkbox"
+                  name="checkbox"
+                  className="text-[#F3D271] "
+                  value={checkbox}
+                  onChange={handleFormFields}
+                  // errorMessage={formErrors?.checkbox}
+                  style={{ height: "8px", width: "12px", borderRadius: "100%" }}
+                />
+
                 {/* <Input
                         type="checkbox"
                         id="checkbox"
@@ -318,7 +318,7 @@ const TermsNCondition = () => {
                 </div>
                 <div className="flex justify-center items-center">
                   <button
-                    className="flex gap-2 cursor-pointer bg-[#E0B34E]  rounded-[10px border hoprintablediv:border-black text-[17px] hoprintablediv:text-black duration-1000 hoprintablediv:scale-105 px-6 py-2"
+                    className="flex gap-2 cursor-pointer  bg-[#E0B34E]  rounded-[10px] border hoprintablediv:border-black text-[17px] hoprintablediv:text-black duration-1000 hoprintablediv:scale-105 px-6 py-2"
                     onClick={() => {
                       setFormErrors(validateFelids(checkboxStaus));
                       // handleSubmit;

@@ -20,7 +20,7 @@ const ContactCard: FC<contactCardProps> = ({
       className={`${
         ""
         // index && (index % 2 ? "bg-[#e0b34e]" : "bg-gray-200")
-      } bg-gray-200 py-5 rounded-xl space-y-3  xxxs:mr-2.5`}
+      } bg-gray-200 py-5 rounded-xl space-y-3   `}
     >
       <div className="flex justify-center">{svg}</div>
       <h1 className=" md:text-[20px] font-bold text-[#333333] text-center">

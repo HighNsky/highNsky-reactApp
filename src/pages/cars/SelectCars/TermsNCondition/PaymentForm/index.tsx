@@ -267,7 +267,7 @@ const PaymentForm = () => {
       setFormFields((prv: any) => ({ ...prv, telephoneBill: "" }));
     }
   };
-  const clearUploadedStates=(name:any)=>{
+  const clearUploadedStates = (name: any) => {
     if (name === "uploadInsurance") {
       setDeleteFileInsurance([{ deleteData: "", saveData: "" }]);
       setUploadInsuranceDetail("");
@@ -281,7 +281,7 @@ const PaymentForm = () => {
       setUploadTelelDetail(""); // also clear preview image state
       setFormFields((prv: any) => ({ ...prv, telephoneBill: "" }));
     }
-  }
+  };
   const handleFormFieldsFile = (e: any) => {
     e.preventDefault();
 
@@ -326,7 +326,6 @@ const PaymentForm = () => {
         });
         // const fileInput = document.getElementById('fileInput');
         clearUploadedStates(name);
-        
       } else {
         setFormFields((curr: any) => ({
           ...curr,
@@ -445,7 +444,7 @@ const PaymentForm = () => {
             body: {
               email: email,
               password: "123456",
-              name:firstName,
+              name: firstName,
               firstName,
               lastName,
               countryCode: "+61",
@@ -533,7 +532,7 @@ const PaymentForm = () => {
     </div>
   );
 
-  console.log('uploadLicDetail?.url', uploadLicDetail?.url)
+  console.log("uploadLicDetail?.url", uploadLicDetail?.url);
   return (
     <BasicLayout>
       <div className="h-[30rem]">
@@ -557,10 +556,10 @@ const PaymentForm = () => {
         </AnimatePresence>
       </div>
       <div className=" py-10  px-4 ">
-        <div className=" xxxs:text-3xl md:text-4xl text-center pt-20 pb-10 font-serif font-semibold">
+        <div className=" xxxs:text-3xl md:text-4xl text-center lg:pt-8 md:pt-0 lg:pb-8 md:pb-8 sm:pt-7 sm:pb-7 xxxs:pt-0 xxxs:pb-4 font-serif font-semibold">
           Booking Payment
         </div>
-        <div className="flex xxxs:flex-col sm:flex-row justify-center sm:gap-10 text-2xl    px-4">
+        <div className="flex  sm:flex-row justify-center sm:gap-10 xxxs:gap-2  lg:text-2xl md:text-[20px] px-4">
           <div>Information</div>
           <AiOutlineArrowRight className="mt-1" />
           <div>Payment</div>
@@ -724,46 +723,45 @@ const PaymentForm = () => {
 
                     {previewImage?.[0]?.uploadLicDoc && (
                       <div
-                      onClick={() =>
-                        setPreviewImage([{ teleDetailDoc: false }])
-                      }
-                      className=" fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden bg-black/30 outline-none backdrop-blur-sm focus:outline-none "
-                    >
-                      <div
-                        className="relative my-6 mx-4 w-full   md:mx-auto "
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={() =>
+                          setPreviewImage([{ teleDetailDoc: false }])
+                        }
+                        className=" fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden bg-black/30 outline-none backdrop-blur-sm focus:outline-none "
                       >
-                        <div className="relative h-[100%]    shadow-lg outline-none focus:outline-none ">
+                        <div
+                          className="relative my-6 mx-4 w-full   md:mx-auto "
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="relative h-[100%]    shadow-lg outline-none focus:outline-none ">
                             <iframe
-                           
                               src={uploadLicDetail?.url}
                               height="800px"
                               width="1600px"
-                            
                               // alt="profile"
                               allowFullScreen
                             />
                           </div>
-                          </div>
-                      
+                        </div>
                       </div>
                     )}
 
-                    <div className="flex">
-                      <Input
-                        id="uploadLic"
-                        placeholder="Upload Lic"
-                        className="bg-[#d6d6d6]"
-                        label=" Upload Lic*"
-                        name="uploadLic"
-                        value={deleteFileUploadLic?.[0]?.deleteData}
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        errorMessage={formErrors?.uploadLic}
-                      />
-                      <div className=" place-self-center mt-8">
+                    <div className="flex ">
+                      <div className="w-full">
+                        <Input
+                          id="uploadLic"
+                          placeholder="Upload Lic"
+                          className="bg-[#d6d6d6] "
+                          label=" Upload Lic*"
+                          name="uploadLic"
+                          value={deleteFileUploadLic?.[0]?.deleteData}
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          errorMessage={formErrors?.uploadLic}
+                        />
+                      </div>
+                      <div className=" place-self-center mt-8 ">
                         {uploadLicDetail && (
-                          <div>
+                          <div className="w-full">
                             <div
                               className=" pl-4"
                               onClick={() =>
@@ -811,16 +809,18 @@ const PaymentForm = () => {
                     )}
 
                     <div className="flex">
-                      <Input
-                        placeholder="Utility Bill"
-                        className="bg-[#d6d6d6]"
-                        label="Utility Bill*"
-                        name="telephoneBill"
-                        value={deleteFileTele?.[0]?.deleteData}
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        errorMessage={formErrors?.telephoneBill}
-                      />
+                      <div className="w-full">
+                        <Input
+                          placeholder="Utility Bill"
+                          className="bg-[#d6d6d6]"
+                          label="Utility Bill*"
+                          name="telephoneBill"
+                          value={deleteFileTele?.[0]?.deleteData}
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          errorMessage={formErrors?.telephoneBill}
+                        />
+                      </div>
                       <div className=" place-self-center mt-8">
                         {uploadTeleDetail && (
                           <div>
@@ -868,17 +868,20 @@ const PaymentForm = () => {
                       </div>
                     )}
 
-                    <div className="flex   ">
-                      <Input
-                        placeholder="Upload Other Documents"
-                        className="bg-[#d6d6d6]"
-                        label=" Upload Other Documents*"
-                        name="uploadInsurance"
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        value={deleteFileInsurance?.[0]?.deleteData}
-                        errorMessage={formErrors?.uploadInsurance} // electronicSignature come from validateFelids () method
-                      />
+                    <div className="flex">
+                      <div className="w-full">
+                        <Input
+                          placeholder="Upload Other Documents"
+                          className="bg-[#d6d6d6]"
+                          label=" Upload Other Documents*"
+                          name="uploadInsurance"
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          value={deleteFileInsurance?.[0]?.deleteData}
+                          errorMessage={formErrors?.uploadInsurance} // electronicSignature come from validateFelids () method
+                        />
+                      </div>
+
                       <div className="place-self-center mt-8">
                         {uploadInsuranceDetail && (
                           <div>
