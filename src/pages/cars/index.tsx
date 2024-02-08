@@ -110,13 +110,13 @@ const Cars = () => {
                 />
               </div>
             ) : (
-              <div className="lg:grid-cols-2 xl:grid-cols-3 grid md:grid-cols-2 sm:grid-cols-1 gap-1 w-full">
+              <div className="lg:grid-cols-2 xl:grid-cols-3 grid md:grid-cols-2 sm:grid-cols-1 gap-2">
                 {getVehicle?.data?.map((item: any) => {
                   return (
                     <>
-                      <div className="flex px-3 mb-6" key={item.id}>
-                        <div className="border rounded-b-3xl drop-shadow-xl bg-white">
-                          <div className=" h-[10%] w-full">
+                      <div className="flex justify-center mb-6" key={item.id}>
+                        <div className="border rounded-b-3xl drop-shadow-xl bg-white  w-[90%]">
+                          <div className=" ">
                             <div
                               className={
                                 item?.availability === true
@@ -135,13 +135,13 @@ const Cars = () => {
                                 </p>
                               )}
                             </div>
-                            <div className=" w-[70%] font-serif italic font-semibold  2xl:text-2xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl  text-[#333333] pl-4 py-2">
-                              {item?.vehicleName}
-                            </div>
+                            <div className="w-[65%] font-serif italic font-semibold lg:h-[85px] md:h-[50px] 2xl:text-2xl xl:text-3xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl  text-[#333333] pl-4 py-2">
+                          {item?.vehicleName}
+                        </div>
                           </div>
 
-                          <div className="flex  p-4 ">
-                            <div className="w-full h-full">
+                          <div className="flex  px-4 gap-3  ">
+                            <div  className="w-[90%] h-[90%]">
                               <div
                                 className={`${Style?.imageBox} `}
                                 // onClick={() => router.push(`/product/${id}`)}

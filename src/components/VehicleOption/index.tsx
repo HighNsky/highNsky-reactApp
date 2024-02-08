@@ -21,7 +21,7 @@ const VehicleOption = ({
     <div key={id}>
       <div className="lg:flex border p-2 flex-row  h-[70%] w-[100%] justify-items-start align-middle items-center border-t-[2px] border-[#d6d6d6] ">
         <div className="w-[100%] py-5  px-4">
-          <div className=" md:text-xl md:font-normal">
+          <div className=" md:text-xl md:font-normal md:text-center xxxs:text-center lg:text-left">
             <span className="md:text-xl  sm:text-sm">{item?.option} .</span>
             <div className="px-2">
               (

@@ -631,10 +631,10 @@ const PaymentForm = () => {
         </AnimatePresence>
       </div>
       <div className=" py-10  px-4 ">
-        <div className=" xxxs:text-3xl md:text-4xl text-center pt-20 pb-10 font-serif font-semibold">
+        <div className=" xxxs:text-3xl md:text-4xl text-center lg:pt-8 md:pt-0 lg:pb-8 md:pb-8 sm:pt-7 sm:pb-7 xxxs:pt-0 xxxs:pb-4 font-serif font-semibold">
           Booking Payment
         </div>
-        <div className="flex xxxs:flex-col sm:flex-row justify-center sm:gap-10 text-2xl    px-4">
+        <div className="flex  sm:flex-row justify-center sm:gap-10 xxxs:gap-2  lg:text-2xl md:text-[20px] px-4">
           <div>Information</div>
           <AiOutlineArrowRight className="mt-1" />
           <div>Payment</div>
@@ -820,21 +820,23 @@ const PaymentForm = () => {
                       </div>
                     )}
 
-                    <div className="flex">
-                      <Input
-                        id="uploadLic"
-                        placeholder="Upload Lic"
-                        className="bg-[#d6d6d6]"
-                        label=" Upload Lic*"
-                        name="uploadLic"
-                        value={deleteFileUploadLic?.[0]?.deleteData}
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        errorMessage={formErrors?.uploadLic}
-                      />
-                      <div className=" place-self-center mt-8">
+                    <div className="flex ">
+                      <div className="w-full">
+                        <Input
+                          id="uploadLic"
+                          placeholder="Upload Lic"
+                          className="bg-[#d6d6d6] "
+                          label=" Upload Lic*"
+                          name="uploadLic"
+                          value={deleteFileUploadLic?.[0]?.deleteData}
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          errorMessage={formErrors?.uploadLic}
+                        />
+                      </div>
+                      <div className=" place-self-center mt-8 ">
                         {uploadLicDetail && (
-                          <div>
+                          <div className="w-full">
                             <div
                               className=" pl-4"
                               onClick={() =>
@@ -882,16 +884,18 @@ const PaymentForm = () => {
                     )}
 
                     <div className="flex">
-                      <Input
-                        placeholder="Utility Bill"
-                        className="bg-[#d6d6d6]"
-                        label="Utility Bill*"
-                        name="telephoneBill"
-                        value={deleteFileTele?.[0]?.deleteData}
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        errorMessage={formErrors?.telephoneBill}
-                      />
+                      <div className="w-full">
+                        <Input
+                          placeholder="Utility Bill"
+                          className="bg-[#d6d6d6]"
+                          label="Utility Bill*"
+                          name="telephoneBill"
+                          value={deleteFileTele?.[0]?.deleteData}
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          errorMessage={formErrors?.telephoneBill}
+                        />
+                      </div>
                       <div className=" place-self-center mt-8">
                         {uploadTeleDetail && (
                           <div>
@@ -939,17 +943,20 @@ const PaymentForm = () => {
                       </div>
                     )}
 
-                    <div className="flex   ">
-                      <Input
-                        placeholder="Upload Other Documents"
-                        className="bg-[#d6d6d6]"
-                        label=" Upload Other Documents*"
-                        name="uploadInsurance"
-                        type="file"
-                        onChange={handleFormFieldsFile}
-                        value={deleteFileInsurance?.[0]?.deleteData}
-                        errorMessage={formErrors?.uploadInsurance} // electronicSignature come from validateFelids () method
-                      />
+                    <div className="flex">
+                      <div className="w-full">
+                        <Input
+                          placeholder="Upload Other Documents"
+                          className="bg-[#d6d6d6]"
+                          label=" Upload Other Documents*"
+                          name="uploadInsurance"
+                          type="file"
+                          onChange={handleFormFieldsFile}
+                          value={deleteFileInsurance?.[0]?.deleteData}
+                          errorMessage={formErrors?.uploadInsurance} // electronicSignature come from validateFelids () method
+                        />
+                      </div>
+
                       <div className="place-self-center mt-8">
                         {uploadInsuranceDetail && (
                           <div>

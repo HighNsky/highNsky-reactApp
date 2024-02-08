@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { validateFelids } from "@/components/TermsNConditionValidation";
 import Button from "@/components/Button";
 import { HiArrowRight } from "react-icons/hi";
+import { IoPrintSharp } from "react-icons/io5";
 import { atom, useAtom } from "jotai";
 import { bookingData } from "@/store/jotaiModal";
 import { Loading } from "@/components/Loading";
@@ -58,7 +59,7 @@ const TermsNCondition = () => {
     <>
       <BasicLayout>
         <SubHeader text={Terms} />
-        <div className="flex justify-center items-center wf-section my-[40px] xxxs:px-16  xs:px-[100px] lg:px-[220px]">
+        <div className="flex justify-center items-center wf-section my-[40px] xxxs:px-16  xs:px-[100px] xl:px-[220px] lg:px-[110px] md:px-[10px] sm:px-[10px] xxxs:px-[10px]">
           <div>
             <div id="printablediv" ref={printRef} className="mx-8">
               <div className="mb-[40px]">
@@ -274,19 +275,19 @@ const TermsNCondition = () => {
               className="form-9"
               onSubmit={handleSubmit}
             >
-              <label className=" flex gap-2 items-center">
-                  <Input
-                    // placeholder={"Last Name"}
-                    // label="Last Name*"
-                    type="checkbox"
-                    name="checkbox"
-                    className="text-[#F3D271] "
-                    value={checkbox}
-                    onChange={handleFormFields}
-                    // errorMessage={formErrors?.checkbox}
-                    style={{height:'8px', width:'12px', borderRadius:'100%'}}
-                  />
-             
+              <label className=" flex gap-2 items-center text-center  justify-center xxxs:items-center xs:items-center  ">
+                <Input
+                  // placeholder={"Last Name"}
+                  // label="Last Name*"
+                  type="checkbox"
+                  name="checkbox"
+                  className="text-[#F3D271] py-[8px] flex items-center "
+                  value={checkbox}
+                  onChange={handleFormFields}
+                  // errorMessage={formErrors?.checkbox}
+                  style={{ height: "8px", width: "12px", borderRadius: "100%" }}
+                />
+
                 {/* <Input
                         type="checkbox"
                         id="checkbox"
@@ -298,15 +299,15 @@ const TermsNCondition = () => {
                         onChange={handleFormFields}
                         className="text-[#F3D271] "
                       /> */}
-                <span className="">
+                <span className=" flex items-center lg:text-base md:text-[16px] xxxs:text-[12px] xxs:text-[11px] ">
                   Yes, I accept all Terms and Conditions of this agreement
                 </span>
               </label>
               <p className="text-red-500 pl-6 font-semibol">
                 {formErrors?.checkbox}
               </p>
-              <div className="flex justify-center mt-4">
-                <div className="flex justify-center items-center mx-10">
+              <div className="flex justify-center mt-4   gap-10">
+                <div className="flex justify-center items-center  ">
                   <div
                     className="flex gap-2 cursor-pointer bg-[#E0B34E]  rounded-[10px] border hoprintablediv:border-black text-[17px] hoprintablediv:text-black duration-1000 hoprintablediv:scale-105 px-6 py-2"
                     onClick={() => {
@@ -314,11 +315,12 @@ const TermsNCondition = () => {
                     }}
                   >
                     Print
+                    <IoPrintSharp className="mt-[5px]" />
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
                   <button
-                    className="flex gap-2 cursor-pointer bg-[#E0B34E]  rounded-[10px border hoprintablediv:border-black text-[17px] hoprintablediv:text-black duration-1000 hoprintablediv:scale-105 px-6 py-2"
+                    className="flex gap-2 cursor-pointer  bg-[#E0B34E]  rounded-[10px] border hoprintablediv:border-black text-[17px] hoprintablediv:text-black duration-1000 hoprintablediv:scale-105 px-6 py-2"
                     onClick={() => {
                       setFormErrors(validateFelids(checkboxStaus));
                       // handleSubmit;

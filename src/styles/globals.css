@@ -8776,6 +8776,23 @@ input[type="checkbox"]:checked {
   font-size: 22px;
 }
 
+@media screen and (max-width: 480px) {
+  .paragraph-21 {
+    font-family: Montserrat, sans-serif;
+    line-height: 26px;
+    /* font-weight: 500; */
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .paragraph-21 {
+    font-family: Montserrat, sans-serif;
+    line-height: 26px;
+    /* font-weight: 500; */
+    font-size: 18px;
+  }
+}
+
 .about-section {
   position: relative;
   display: block;
@@ -14755,7 +14772,11 @@ input[type="checkbox"]:checked {
     width: 100%;
   }
 }
-
+@media screen and (max-width: 768px) {
+  .div-block-312764{
+    padding: 20px 0px;
+  }
+}
 @media screen and (max-width: 479px) {
   .about-para {
     text-align: center;
@@ -16421,6 +16442,7 @@ input[type="checkbox"]:checked {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    padding: 12px 0px;
   }
 
   .div-block-312765 {

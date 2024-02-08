@@ -138,14 +138,14 @@ const Contact = () => {
           </div>
           <div>
             <div className="flex-block"></div>
-            <div className="grid xxs:grid-cols-1 md:px-28 px-10  md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 xxxs:mx-4 gap-4  ">
+            <div className="grid xxs:grid-cols-1 md:px-16 xxxs:px-5 px-10  md:grid-cols-2 lg:px-16  xl:px-32 xl:grid-cols-2 2xl:grid-cols-4  gap-4  ">
               {contactDetails?.map((item, index) => (
                 <ContactCard {...item} key={item?.title} index={index + 1} />
               ))}
             </div>
           </div>
 
-          <div className=" grid  xxs:grid-cols-1 overflow-hidden items-center bg-[#e0b34e] my-20 md:px-14 px-10 xl:px-28 justify-center lg:grid-cols-2  lg:pb-0 ">
+          <div className=" grid xxxs:px-5  xxs:grid-cols-1 overflow-hidden items-center bg-[#e0b34e] lg:mt-16 md:mt-10 xxxs:mt-4 md:px-14 px-10 xl:px-28 justify-center lg:grid-cols-2  lg:pb-0 ">
             <div className="">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className=" grid xxxs:grid-cols-1 xxxs:m-3 xxxs:mb-0   ">

@@ -10,7 +10,7 @@ const Loading = () => {
   const router = useRouter();
   const rideIdNo = router.query.id;
   if (typeof window !== "undefined") {
-    var rideid:any = window.sessionStorage.getItem("userRideId");
+    var rideid: any = window.sessionStorage.getItem("userRideId");
     //   let guest = JSON.parse(sessionStorage.getItem("guestData"));
     //   const navigate = useNavigate();
     // const { vehicle } = useParams();

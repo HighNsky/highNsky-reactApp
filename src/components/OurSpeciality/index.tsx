@@ -97,7 +97,7 @@ const OurSpeciality = () => {
         <h3 className="heading-7227 text-[#f3d271]  xxs:pb-[5.5rem] md:pb-0">
           Our Speciality
         </h3>
-        <div className="  xxs:pt-24  pb-[4rem]   w-full relative z-10   text-center ">
+        <div className="  xxs:pt-24     w-full relative z-10   text-center ">
           <div className="md:bg-white  md-my-0 md:mt-10  h-1  xxxs:flex-col flex md:flex-row justify-evenly sm:mx-[5%] lg:mx-[16%]">
             <div className=" border   xxxs:m-3 md:m-0  xxxs:p-4 md:p-0 md:w-[250px] xxxs:px-6 md:px-0">
               <div
@@ -110,9 +110,9 @@ const OurSpeciality = () => {
                   } w-3 h-3  rounded-full relative top-[13px] left-[12px]  `}
                 ></div>
               </div>
-              <span className=" text-xl font-bold relative md:-top-[8rem] text-[#f3d271]  xxxs:left-[20px]  text-center ">
+              <div className=" text-xl w-full flex justify-center font-bold relative md:-top-[8rem] text-[#f3d271]    text-center ">
                 Customer Support
-              </span>
+              </div>
             </div>
             <div className="md:w-[250px] xxxs:px-6 md:px-0  border  xxxs:m-2 md:m-0  xxxs:p-4 md:p-0">
               <div
@@ -125,9 +125,9 @@ const OurSpeciality = () => {
                   } w-3 h-3  rounded-full relative top-[13px] left-[12px]`}
                 ></div>
               </div>
-              <span className=" relative md:-top-[8rem]   text-[#f3d271] text-xl font-bold xxxs:left-[20px] ">
+              <div className="text-xl w-full flex justify-center font-bold relative md:-top-[8rem] text-[#f3d271]    text-center ">
                 Flexible Rentals
-              </span>
+              </div>
             </div>
             <div className="md:w-[250px] xxxs:px-6 md:px-0  border  xxxs:m-2 md:m-0  xxxs:p-4 md:p-0">
               <div
@@ -140,9 +140,10 @@ const OurSpeciality = () => {
                   } w-3 h-3 rounded-full relative top-[13px] left-[12px] `}
                 ></div>
               </div>
-              <span className=" relative md:-top-[8rem] text-[#f3d271] font-bold text-xl xxxs:left-[20px]  text-center mx-auto">
+              {/* <div className=" relative md:-top-[8rem] text-[#f3d271] font-bold text-xl xxxs:left-[20px]  text-center mx-auto"> */}
+              <div className=" text-xl w-full flex justify-center font-bold relative md:-top-[8rem] text-[#f3d271] text-center">
                 Excellent Service and Great Value
-              </span>
+              </div>
             </div>
           </div>
           <motion.div
@@ -151,7 +152,7 @@ const OurSpeciality = () => {
             viewport={{ once: true, amount: 0.5 }}
           >
             <motion.div className="car-animation" variants={cardVariants}>
-              <div className=" pb-44 w-[100%] 2xl:px-[14rem]   ">
+              <div className=" pb-40 w-[100%] 2xl:px-[14rem]   ">
                 <div className="grid md:grid-cols-3  justify-center    xxs:mt-44 md:mt-0  gap-1 mx-2 ">
                   {tabone?.map?.((items) => (
                     <div className="" key={items?.id}>
