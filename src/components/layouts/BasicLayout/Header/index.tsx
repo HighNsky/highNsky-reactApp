@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import Button from "@/components/Button";
 import { changeNavColor } from "@/store/navBar";
 import { useAtom } from "jotai";
-import { bookingData,booking } from "@/store/jotaiModal";
+import { bookingData, booking } from "@/store/jotaiModal";
 import { meUser } from "@/store/jotaiModal";
 import axios from "axios";
 import { liveurl } from "@/hostUrl";
@@ -19,20 +19,18 @@ const Header = () => {
   const [, set] = useAtom(booking);
   const router = useRouter();
   const [nav, setNav] = useState(false);
-  const [cId, setCid] = useState('')
+  const [cId, setCid] = useState("");
   // const [linkColor,setLinkColor]=useState({one:'false',second:false})
   const [open, setOpen] = useAtom(changeNavColor);
-  console.log('open', open)
   const [user, setUser] = useAtom(meUser);
   // useEffect(() => {
   //   if (nav) {
   //     document.body.style.overflow = "hidden";
-  //   } 
+  //   }
   //   // else {
   //   //   document.body.style.overflow = "scroll";
   //   // }
   // }, [nav]);
-
 
   // useEffect(() => {
   //   axios
@@ -46,33 +44,31 @@ const Header = () => {
   //   localStorage.setItem("open", JSON.stringify(open));
   // }, [open]);
 
+  //   useEffect(() => {
+  //     const Cid = localStorage.getItem("customerId");
 
-//   useEffect(() => {
-//     const Cid = localStorage.getItem("customerId");
-    
-// if (Cid) {
-//   setCid(Cid);
-// }
-// }, []);
+  // if (Cid) {
+  //   setCid(Cid);
+  // }
+  // }, []);
 
-//   useEffect(() => {
-//     const callMe = () => {
-//       if (cId) {
-//       axios
-//         .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
-//         // .get((`http://localhost:5001/api/passenger/${cId}`)
-//         // , {
-//         //   headers: { Authorization: localStorage.getItem("accessToken") },
-//         // }
-//         )
-//         ?.then((res) => {
-//           setUser(res?.data)
-//         });
-//     };}
-//     callMe()
-//   }, [cId]);
+  //   useEffect(() => {
+  //     const callMe = () => {
+  //       if (cId) {
+  //       axios
+  //         .get((`https://api-test.highnsky.com.au/api/passenger/${cId}`)
+  //         // .get((`http://localhost:5001/api/passenger/${cId}`)
+  //         // , {
+  //         //   headers: { Authorization: localStorage.getItem("accessToken") },
+  //         // }
+  //         )
+  //         ?.then((res) => {
+  //           setUser(res?.data)
+  //         });
+  //     };}
+  //     callMe()
+  //   }, [cId]);
 
-  
   const removeOnlineBookLocal = () => {
     localStorage.removeItem("onlineBooking");
   };
@@ -82,7 +78,7 @@ const Header = () => {
     // var open = localStorage.getItem("open") || "";
     window.localStorage.setItem("open", JSON.stringify(open));
   }
-  
+
   useEffect(() => {
     const navColor = JSON.parse(localStorage.getItem("open") || "{}");
     setOpen(navColor);
@@ -129,7 +125,12 @@ const Header = () => {
 
           <nav className="  text-white">
             <ul className="flex md:gap-6 lg:gap-[7rem]">
-              <div className="cursor-pointer" onClick={() =>{ router.push("/")}}>
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push("/");
+                }}
+              >
                 <li
                   className={` text-xl ${
                     open?.home ? "text-[#E0B34E]" : "text-white"
@@ -137,19 +138,23 @@ const Header = () => {
                   onClick={() => {
                     removeOnlineBookLocal();
                     setOnlineBooking("");
-                      setOpen({
-                        home: true,
-                        about: false,
-                        car: false,
-                        contact: false,
-                      });
-                    
+                    setOpen({
+                      home: true,
+                      about: false,
+                      car: false,
+                      contact: false,
+                    });
                   }}
                 >
                   Home
                 </li>
               </div>
-              <div  className="cursor-pointer" onClick={() =>{ router.push("/about")}}>
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push("/about");
+                }}
+              >
                 <li
                   className={` text-xl ${
                     open?.about ? "text-[#E0B34E]" : "text-white"
@@ -166,7 +171,12 @@ const Header = () => {
                   About
                 </li>
               </div>
-              <div  className="cursor-pointer" onClick={() =>{ router.push("/cars")}}>
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push("/cars");
+                }}
+              >
                 <li
                   className={` text-xl ${
                     open?.car ? "text-[#E0B34E]" : "text-white"
@@ -189,7 +199,12 @@ const Header = () => {
                   Cars
                 </li>
               </div>
-              <div  className="cursor-pointer" onClick={() => {router.push("/contact")}}>
+              <div
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push("/contact");
+                }}
+              >
                 <li
                   className={` text-xl ${
                     open?.contact ? "text-[#E0B34E]" : "text-white"
@@ -253,7 +268,6 @@ const Header = () => {
 
               <AiOutlineMenu
                 className=" text-black bg-[#f3d271] m-8  w-12 h-12 mt-6 rounded-sm p-2 "
-                
                 onClick={() => {
                   setNav(!nav);
                 }}
@@ -325,7 +339,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {loading && <Loading/> }
+      {loading && <Loading />}
     </header>
   );
 };
