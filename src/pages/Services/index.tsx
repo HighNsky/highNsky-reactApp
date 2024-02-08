@@ -39,7 +39,7 @@ const Services = () => {
     <>
       <div className="backcar">
         <div className="backcar2">
-          <div className="xxxs:relative    xxs:h-[130vh] xs:h-[72vh] pb-4 xs:grid-cols-2 xs:w-[26rem] xs:grid xs:content-center xs:absolute xs:top-0 xs:right-0 md:w-[55%] md:left[144px] bg-[rgba(243,210,113,0.81)] xl:h-[72vh] xs:rounded-l-[21px] px-4 ">
+          <div className="xxxs:relative    xxs:h-[90vh] xs:h-[72vh] pb-4 xs:grid-cols-2 xs:w-[26rem] xs:grid xs:content-center xs:absolute xs:top-0 xs:right-0 md:w-[55%] md:left[144px] bg-[rgba(243,210,113,0.81)] xl:h-[72vh] xs:rounded-l-[21px] px-4 ">
             {servicesDetails?.map((item) => (
               <ServicesCard {...item} key={item?.title} />
             ))}

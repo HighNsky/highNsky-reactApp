@@ -26,6 +26,7 @@ const SubHeader = (props: any) => {
             width: "100%",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
           {/* <motion.div

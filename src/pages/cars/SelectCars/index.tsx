@@ -119,7 +119,7 @@ const SelectCars = () => {
             {getOption?.data?.length === 0 ? (
               ""
             ) : (
-              <div className="flex justify-end ">
+              <div className="flex md:justify-center xxxs:justify-center lg:justify-end ">
                 <div className="flex justify-end  ">
                   <div className=" mx-auto md:p-2 p-1 my-4  rounded-lg  font-semibold  bg-[#E0B34E] ">
                     Total Price :

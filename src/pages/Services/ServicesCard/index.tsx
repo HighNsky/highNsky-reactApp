@@ -41,7 +41,7 @@ const ServicesCard: FC<servicesCardProps> = ({
       viewport={{ once: true, amount: 0.8 }}
     >
       <motion.div
-        className="card-animation xl:px-[3rem] pb-4  md:pb-[8rem]  p-5  border-yellow-400  "
+        className="card-animation xl:px-[3rem] pb-4  md:pb-[8rem]  md:p-0  border-yellow-400  "
         variants={cardVariants}
       >
         <div className="flex justify-center  ">
