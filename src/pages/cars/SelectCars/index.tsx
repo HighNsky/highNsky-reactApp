@@ -25,11 +25,11 @@ const SelectCars = () => {
   } else if (filter === "weekly") {
     filter = "Per Week";
   } else if (filter === "daily") {
-    filter = "Per Trip";
+    filter = "Per Day";
   }
   const {
     data: getOption,
-    refatch,
+    // refatch,
     isLoading,
   }: any = useGetVehicleOption({
     query: {

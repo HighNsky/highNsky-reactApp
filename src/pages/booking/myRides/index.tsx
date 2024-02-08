@@ -32,20 +32,28 @@ const MyRides = () => {
   // const { email } = useParams();
   // let guest = sessionStorage.getItem("guestData");
   const emailz = user?.data?.email;
+
+  if (typeof window !== "undefined") {
+    var rideid: any = window.sessionStorage.getItem("userRideId");
+    console.log("rideid", rideid, "loading", loading);
+    //   let guest = JSON.parse(sessionStorage.getItem("guestData"));
+    //   const navigate = useNavigate();
+    // const { vehicle } = useParams();
+  }
   // let guestParse = JSON.parse(guest);
   // const url = `${liveurl}/api/passenger/getAllBookedRides/?status=Upcoming&email=${emailz}`;
-  const url = `https://api-test.highnsky.com.au/api/passenger/getAllBookedRides/ride?email=${emailz}`;
-  // const url = `http://localhost:5001/api/passenger/getAllBookedRides/ride?email=${emailz}`;
-  useEffect(() => {
-    if (div) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [div]);
+  const url = `https://api-test.highnsky.com.au/api/passenger/getAllBookedRides/ride?id=${rideid}`;
+  // const url = `http://localhost:5001/api/passenger/getAllBookedRides/ride?id=${rideid}`;
+  // useEffect(() => {
+  //   if (div) {
+  //     document.body.style.overflow = "scroll";
+  //   } else {
+  //     document.body.style.overflow = "scroll";
+  //   }
+  // }, [div]);
   useEffect(() => {
     setLoading(true);
-    if (emailz) {
+    if (rideid) {
       axios
         .get(
           url
@@ -54,20 +62,21 @@ const MyRides = () => {
           // }
         )
         .then((res) => {
-          window.localStorage.removeItem("customerId");
+          // window.localStorage.removeItem("customerId");
+          // window.sessionStorage.removeItem("userRideId");
           // localStorage.clear();
           setMyRides(res?.data?.data);
           setLoading(false);
         })
         .catch((error) => {
+          console.log("error5005", error);
           setLoading(false);
         });
     }
-    window.sessionStorage.removeItem("userRideId");
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000);
+  }, [rideid]);
 
   const Handlediv = (id: any) => {
     setDiv(!div);
@@ -146,7 +155,7 @@ const MyRides = () => {
                       </p>
                     </div>
                   </div>
-                  <p className="text-md p-3 justify-evenly text-center  flex flex-row gap-20 place-self-center  ">
+                  <div className="text-md p-3 justify-evenly text-center  flex flex-row gap-20 place-self-center  ">
                     <div className=" p-1 flex flex-row gap-2 w-1/2 text-start text-[#555]">
                       <div>
                         <HiUserGroup className="h-6 w-6  " />
@@ -159,16 +168,18 @@ const MyRides = () => {
                       </div>
                       max {myRides?.vehicleDetails?.luggageQuantity}
                     </div>
-                  </p>
+                  </div>
                 </div>
                 <div
                   onClick={() => {
                     setLoading(true);
+                    window.localStorage.removeItem("customerId");
+                    window.sessionStorage.removeItem("userRideId");
                     router.push("/");
                   }}
                   className="bg-yellow-600 cursor-pointer md:h-[50px]  bg-[#e0b34e]  rounded-[10px] hover:border-black text-center text-xl text-white p-2 px-3 hover:text-black duration-1000 hover:scale-105 w-[100px] place-self-end mb-10 mr-10 ml-auto rounded-md border hover:bg-yellow-500  "
                 >
-                  ok
+                  Ok
                 </div>
               </div>
             </div>

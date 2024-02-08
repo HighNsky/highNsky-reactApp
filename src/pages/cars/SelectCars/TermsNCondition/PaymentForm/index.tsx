@@ -210,11 +210,13 @@ const PaymentForm = () => {
     uploadLic: uploadLic,
     telephoneBill: telephoneBill,
   });
-  console.log("phone", phone);
   const handleFormFields = (e: any) => {
     const { value, name } = e.target;
-
-    setFormFields((curr: any) => ({ ...curr, [name]: value?.trim() }));
+    if (name === "address") {
+      setFormFields((curr: any) => ({ ...curr, [name]: value }));
+    } else {
+      setFormFields((curr: any) => ({ ...curr, [name]: value?.trim() }));
+    }
     if (name) {
       setFormErrors((curr: any) => ({ ...curr, [name]: "" }));
     }
@@ -433,85 +435,158 @@ const PaymentForm = () => {
 
       setFormErrors(errors);
 
+      /************************below code is signing up the guest user before creating ride************************************* */
+      /************Hide it due to the duplicate customer creation due to the unique email******** */
+      // if (
+      //   !errors.name &&
+      //   !errors.countryCode &&
+      //   !errors.email &&
+      //   !errors.phone
+      // ) {
+      //   singup
+      //     .mutateAsync({
+      //       body: {
+      //         email: email,
+      //         password: "123456",
+      //         name: firstName,
+      //         firstName,
+      //         lastName,
+      //         countryCode: "+61",
+      //         phone: phone,
+      //       },
+      //     })
+
+      //     .then((res: any) => {
+      //       window.localStorage.setItem("customerId", res?.data?._id);
+      //       formData.append("customerId", res?.data?._id);
+      //       if (
+      //         // !sigImage&&
+      //         !errors.licNo &&
+      //         !errors.electronicSignature &&
+      //         !errors.uploadInsurance &&
+      //         !errors.uploadLic &&
+      //         !errors.telephoneBill &&
+      //         !errors.address
+      //         //  &&
+      //         // totalP === true
+      //       ) {
+      //         setLoading(true);
+      //         bookRide
+      //           .mutateAsync({
+      //             body: formData,
+      //           })
+      //           .then((res: any) => {
+      //             window.sessionStorage.setItem("userRideId", res.data._id);
+      //             // setLoading(false);
+      //             if (typeof window !== "undefined") {
+      //               let rideid =
+      //                 window.sessionStorage.getItem("userRideId") ||
+      //                 res.data._id;
+
+      //               handleStripe({
+      //                 firstName: firstName,
+      //                 lastName: lastName,
+      //                 email: email,
+
+      //                 phoneNo: phone,
+      //                 address: address,
+      //                 licNo: licNo,
+      //                 pickupLocation: onlineBooking?.data?.pickUpLocation,
+      //                 pickupDate: onlineBooking?.pickUpDate,
+      //                 pickUpTime: onlineBooking?.pickUpTime,
+      //                 returnDate: onlineBooking?.returnDate,
+      //                 returnTime: onlineBooking?.returnTime,
+      //                 price: totaVehiclePrice,
+      //                 category: carPrice?.priceDetail?.priceTitle,
+      //                 capacity: carPrice?.priceDetail?.price,
+      //                 _id: rideid,
+      //                 // customerId:user?.data?._id,
+      //               });
+      //             }
+      //           })
+      //           .catch((err: any) => {
+      //             if (err) {
+      //               setLoading(false);
+      //             }
+      //           });
+      //       }
+
+      //       if (Object.keys(errors).length) {
+      //         return;
+      //       } else {
+      //         setFormFields({ ...initialValues });
+      //       }
+      //     })
+      //     .catch((error: any) => {});
+
+      //     if (Object.keys(errors).length) {
+      //       return;
+      //     } else {
+      //       setFormFields({ ...initialValues });
+      //     }
+      // }
+
+      /*************************************************************************************** */
+
       if (
+        // !sigImage&&
         !errors.name &&
         !errors.countryCode &&
         !errors.email &&
-        !errors.phone
+        !errors.phone &&
+        !errors.licNo &&
+        !errors.electronicSignature &&
+        !errors.uploadInsurance &&
+        !errors.uploadLic &&
+        !errors.telephoneBill &&
+        !errors.address
+        //  &&
+        // totalP === true
       ) {
-        singup
+        setLoading(true);
+        bookRide
           .mutateAsync({
-            body: {
-              email: email,
-              password: "123456",
-              name: firstName,
-              firstName,
-              lastName,
-              countryCode: "+61",
-              phone: phone,
-            },
+            body: formData,
           })
-
           .then((res: any) => {
-            window.localStorage.setItem("customerId", res?.data?._id);
-            formData.append("customerId", res?.data?._id);
-            if (
-              // !sigImage&&
-              !errors.licNo &&
-              !errors.electronicSignature &&
-              !errors.uploadInsurance &&
-              !errors.uploadLic &&
-              !errors.telephoneBill &&
-              !errors.address
-              //  &&
-              // totalP === true
-            ) {
-              setLoading(true);
-              bookRide
-                .mutateAsync({
-                  body: formData,
-                })
-                .then((res: any) => {
-                  window.sessionStorage.setItem("userRideId", res.data._id);
-                  // setLoading(false);
-                  if (typeof window !== "undefined") {
-                    let rideid = window.sessionStorage.getItem("userRideId");
+            window.sessionStorage.setItem("userRideId", res.data._id);
+            // setLoading(false);
+            if (typeof window !== "undefined") {
+              let rideid =
+                window.sessionStorage.getItem("userRideId") || res.data._id;
 
-                    handleStripe({
-                      firstName: firstName,
-                      lastName: lastName,
-                      email: email,
+              handleStripe({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
 
-                      phoneNo: phone,
-                      address: address,
-                      licNo: licNo,
-                      pickupLocation: onlineBooking?.data?.pickUpLocation,
-                      pickupDate: onlineBooking?.pickUpDate,
-                      pickUpTime: onlineBooking?.pickUpTime,
-                      returnDate: onlineBooking?.returnDate,
-                      returnTime: onlineBooking?.returnTime,
-                      price: totaVehiclePrice,
-                      category: carPrice?.priceDetail?.priceTitle,
-                      capacity: carPrice?.priceDetail?.price,
-                      _id: rideid,
-                      // customerId:user?.data?._id,
-                    });
-                  }
-                })
-                .catch((err: any) => {
-                  if (err) {
-                    setLoading(false);
-                  }
-                });
-            }
-
-            if (Object.keys(errors).length) {
-              return;
-            } else {
-              setFormFields({ ...initialValues });
+                phoneNo: phone,
+                address: address,
+                licNo: licNo,
+                pickupLocation: onlineBooking?.data?.pickUpLocation,
+                pickupDate: onlineBooking?.pickUpDate,
+                pickUpTime: onlineBooking?.pickUpTime,
+                returnDate: onlineBooking?.returnDate,
+                returnTime: onlineBooking?.returnTime,
+                price: totaVehiclePrice,
+                category: carPrice?.priceDetail?.priceTitle,
+                capacity: carPrice?.priceDetail?.price,
+                _id: rideid,
+                // customerId:user?.data?._id,
+              });
             }
           })
-          .catch((error: any) => {});
+          .catch((err: any) => {
+            if (err) {
+              setLoading(false);
+            }
+          });
+
+        if (Object.keys(errors).length) {
+          return;
+        } else {
+          setFormFields({ ...initialValues });
+        }
       }
     }
   };
