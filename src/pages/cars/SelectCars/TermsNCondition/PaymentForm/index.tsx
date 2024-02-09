@@ -990,7 +990,6 @@ const PaymentForm = () => {
                               src={uploadInsuranceDetail?.url}
                               height={400}
                               width={400}
-                              // alt="profile"
                             />
                           </div>
                         </div>
