@@ -118,14 +118,14 @@ const MyRides = () => {
                       {myRides?.vehicleDetails?.vehicleName}
                     </h5>{" "}
                     {myRides?.vehicleDetails?.vehicleImage?.url ? (
-                      <img
-                        className="h-[320px] w-[500px] object-fill p-5     "
+                      <img style={{objectFit:'contain'}}
+                        className="h-[320px] w-[500px]  p-5"
                         src={myRides?.vehicleDetails?.vehicleImage?.url}
                         alt=""
                       />
                     ) : null}{" "}
                   </div>
-                  <div className=" pt-3 flex  flex-col  items-center mx-auto justify-center">
+                  <div className=" pt-3 flex  flex-col  items-center mx-auto justify-center lg:w-[50%] md:w-[100%]">
                     <div className="flex gap-2 justify-center text-[#CA8A04] mb-4 underline ">
                       <ImLocation2 className="text-[#CA8A04] h-6 w-6 mt-1   font-thin   " />
                       <span className="mb-4 md:text-2xl place-self-center ">
