@@ -78,7 +78,6 @@ const Header = () => {
     // var open = localStorage.getItem("open") || "";
     window.localStorage.setItem("open", JSON.stringify(open));
   }
-
   useEffect(() => {
     const navColor = JSON.parse(localStorage.getItem("open") || "{}");
     setOpen(navColor);

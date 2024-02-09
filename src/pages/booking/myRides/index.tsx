@@ -75,9 +75,7 @@ const MyRides = () => {
           setLoading(false);
         });
     }
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 2000);
+    
   }, [rideid]);
 
   const Handlediv = (id: any) => {
@@ -104,7 +102,6 @@ const MyRides = () => {
           {loading ? (
             <div className=" bg-transparent z-[1] absolute w-[100%] h-screen">
               <div className="flex justify-center bg-white h-screen">
-                {/* <Loader /> */}
               </div>
             </div>
           ) : (

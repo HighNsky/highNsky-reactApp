@@ -49,7 +49,7 @@ const Cars = () => {
             </div>
           )}
           {ThreeVehicleData?.length === 0 || !ThreeVehicleData ? (
-            <div className=" w-full place-self-center md:col-span-3 mb-4">
+            <div className=" w-full place-self-center flex justify-center md:col-span-3 mb-4">
               <EmptyStateContainer
                 subHeading=""
                 goto=""

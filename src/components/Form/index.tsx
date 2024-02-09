@@ -102,15 +102,31 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
       "pickuplocation",
     ];
 
-    if (fieldsArr?.length > 0) {
-      fieldsArr?.map((vals) => {
-        if (newArr?.includes(vals)) {
-          setSubmitDis(true);
-        } else {
-          setSubmitDis(false);
-        }
-      });
-    }
+    let refinedErrorFields: any = [];
+    refinedErrorFields = newArr?.filter((item: any) =>
+      fieldsArr?.includes(item)
+    );
+
+    console.log(refinedErrorFields, "errors");
+
+    // if (fieldsArr?.length > 0) {
+    //   fieldsArr?.map((vals) => {
+    //     if (refinedErrorFields?.includes(vals)) {
+    //       console.log("gooooooddddd");
+
+    //       setSubmitDis(true);
+    //     } else {
+    //       console.log("baaaddddd");
+
+    //       setSubmitDis(false);
+    //     }
+    //   });
+    // }
+
+    if (refinedErrorFields?.length > 0) {
+      setSubmitDis(true);
+    } else setSubmitDis(false);
+
     const a = moment(returndate + " " + returntime).toISOString();
     const b = moment(pickupdate + " " + pickuptime).toISOString();
     //  const b=dayjs(pickupdate)?.format()
@@ -148,12 +164,13 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
       setFormFields({ ...initialValues });
     }
 
-    setLoading(true);
+    // setLoading(true);
   };
 
   const equalityDate = isAvailabilty?.data;
 
   useEffect(() => {
+    console.log("isAlert", isAlert);
     if (id && isAlert?.type !== "error" && isAlert?.type !== "") {
       available();
       if (submitDis === false && isAvailRes)
