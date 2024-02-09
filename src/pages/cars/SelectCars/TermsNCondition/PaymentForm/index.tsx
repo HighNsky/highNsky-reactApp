@@ -30,6 +30,7 @@ import { Loading } from "@/components/Loading";
 import Esignature from "@/components/Esignature";
 import Alert from "@/components/Alert";
 
+
 const PaymentForm = () => {
   const [isAlert, setIsAlert] = useState<any>({ type: "", msg: "" });
   const [loading, setLoading]: any = useState(false);
@@ -212,6 +213,7 @@ const PaymentForm = () => {
   });
   const handleFormFields = (e: any) => {
     const { value, name } = e.target;
+    console.log('first', value, name)
     if (name === "address") {
       setFormFields((curr: any) => ({ ...curr, [name]: value }));
     } else {
@@ -375,7 +377,8 @@ const PaymentForm = () => {
     if (signatureRef?.current?._sigPad?._data?.length >= 1) {
       signatureImage = signatureRef?.current?.toDataURL();
       setSigImage(signatureImage);
-    } else {
+    } 
+    else {
       setSigImage("");
     }
   };
@@ -610,7 +613,7 @@ const PaymentForm = () => {
   console.log("uploadLicDetail?.url", uploadLicDetail?.url);
   return (
     <BasicLayout>
-      <div className="h-[30rem]">
+      {/* <div className="h-[30rem]">
         <Layout />
         <AnimatePresence>
           <motion.div
@@ -629,7 +632,58 @@ const PaymentForm = () => {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </div> */}
+
+<div className=" lg:h-[28rem] xxxs:h-[25rem] xxs:h-[15rem] md:h-[25rem]">
+        {/* <Layout /> */}
+        <div
+          style={{
+            backgroundImage: `url(${carsi?.src})`,
+            height: "100%",
+            width: "100%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* <motion.div
+            className=" flex flex-col justify-center items-center   h-full  "
+            style={{ opacity: 0.1, background: "#000000b0" }}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          > */}
+          <div
+            className=" flex flex-col justify-center items-center   h-full  "
+            style={{ background: "rgb(0 0 0 / 44%)" }}
+          >
+            <div className="bred-head text-[white]   flex justify-center items-center lg:pt-[6rem] sm:pt-[3rem] ">
+            Checkout
+
+            </div>
+            <div className="flex">
+              <div
+                onClick={() => {
+                  router.push("/");
+                }}
+                className=" text-[white] cursor-pointer breadcrumb-link"
+              >
+                Home
+              </div>
+              <div
+                onClick={() => {
+                  router.push("/");
+                }}
+                className="text-[#efb837] text-span-23"
+              >
+                /               Checkout
+
+              </div>
+            </div>
+            {/* </motion.div> */}
+          </div>
+        </div>
+        </div>
       <div className=" py-10  px-4 ">
         <div className=" xxxs:text-3xl md:text-4xl text-center lg:pt-8 md:pt-0 lg:pb-8 md:pb-8 sm:pt-7 sm:pb-7 xxxs:pt-0 xxxs:pb-4 font-serif font-semibold">
           Booking Payment
