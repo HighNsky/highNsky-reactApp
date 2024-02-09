@@ -1051,7 +1051,7 @@ const PaymentForm = () => {
                     />
                   </div>
 
-                  <div className="flex justify-between p-2 mt-24 ">
+                  <div className="flex justify-between p-2 mt-4 ">
                     <div>Vehicle Price</div>
                     <div>
                       $
