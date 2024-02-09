@@ -94,7 +94,6 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
     setFormErrors(errors);
     let newArr: any = [];
     newArr = Object.keys(errors);
-
     let fieldsArr = [
       "pickupdate",
       "pickuptime",

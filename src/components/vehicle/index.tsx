@@ -29,7 +29,6 @@ const Cars = () => {
   const Cars = "Choose vehicles";
   const { data: getVehicle, isLoading }: any = useGetVehicle();
   const VehicleData = getVehicle?.data;
-
   const ThreeVehicleData = VehicleData?.slice(0, 3);
   if (typeof window !== "undefined") {
     // const onlineBooking: OnlineBookingType = JSON.parse(localStorage.getItem("onlineBooking"));
