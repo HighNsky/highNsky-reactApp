@@ -1,6 +1,12 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
+import { IoIosStar } from "react-icons/io";
+import { FaRegStar } from "react-icons/fa";
+// import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { MdStarHalf } from "react-icons/md";
+import { IoIosStarHalf } from "react-icons/io";
+import { IoIosStarOutline } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -15,6 +21,8 @@ import right from "../../assets/images/testimonailright.png";
 import male1 from "../../assets/images/male.png";
 
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
+import { useGetTestimonials } from "@/hooks/testimonials/query";
+import { StarRating } from "../StarRating";
 
 SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
@@ -61,6 +69,15 @@ const data = [
   // },
 ];
 const Testimonial = () => {
+  const { data: getTestimonials, isLoading }: any = useGetTestimonials();
+  const [testimonialsData, setTestimonialsData] = useState([0]);
+console.log('getTestimonials', getTestimonials);
+useEffect(() => {
+ if (getTestimonials?.data?.length > 0) {
+  setTestimonialsData(getTestimonials?.data);
+ }
+}, [getTestimonials])
+
   return (
     <div
       className="relative"
@@ -99,10 +116,10 @@ const Testimonial = () => {
             slidesPerView={1}
             className="mySwiper "
           >
-            {data?.map((value) => (
-              <SwiperSlide key={value?.id} className=" ">
+            {testimonialsData?.map((value:any) => (
+              <SwiperSlide key={value?._id} className=" ">
                 <Image
-                  src={value?.image}
+                  src={male1}
                   // loading="lazy"
                   // sizes="(max-width: 479px) 100vw, (max-width: 1279px) 80px, (max-width: 1439px) 6vw, 80px"
                   // srcset="images/male-p-500.png 500w, images/male.png 512w"
@@ -111,20 +128,14 @@ const Testimonial = () => {
                 />
 
                 <p className=" text-xl leading-8 font-sans text-white p-6  ">
-                  {value.para}
+                  {value.feedback}
                 </p>
-                <div className="flex gap-2  justify-center p-4">
-                  <div className="div-block-312798  ">{value?.svg}</div>
-                  <div className="div-block-312798">{value?.svg}</div>
-                  <div className="div-block-312798">{value?.svg}</div>
-                  <div className="div-block-312798">{value?.svg}</div>
-                  <div className="div-block-312798">{value?.svg}</div>
-                </div>
+                <StarRating starCount={value?.starRating}/>
                 <div className=""></div>
                 <div className="text-center p-4">
                   <div className="text-xl  text-white font-bold">
-                    {value?.name1}
-                    <span className="text-lg font-medium">{value?.name2}</span>
+                    {value?.customerName}
+                    {/* <span className="text-lg font-medium">{value?.name2}</span> */}
                   </div>
                 </div>
               </SwiperSlide>
