@@ -258,7 +258,7 @@ const Cars = () => {
                  )
                )}
               <div className="flex justify-center my-4">
-                <Button className="px-4" onClick={() => {setLoading(true),setIsMOdal(false); router.push(`/booknowform`);}}>ok</Button>
+                <Button className="px-4" onClick={() => {setLoading(true),setIsMOdal(false); router.push(`/booknowform`);}}>OK</Button>
               </div>
             </div>
           </div>
