@@ -610,7 +610,6 @@ const PaymentForm = () => {
     </div>
   );
 
-  console.log("uploadLicDetail?.url", uploadLicDetail?.url);
   return (
     <BasicLayout>
       {/* <div className="h-[30rem]">
