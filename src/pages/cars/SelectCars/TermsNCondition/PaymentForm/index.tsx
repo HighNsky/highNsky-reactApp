@@ -610,7 +610,6 @@ const PaymentForm = () => {
     </div>
   );
 
-  console.log("uploadLicDetail?.url", uploadLicDetail?.url);
   return (
     <BasicLayout>
       {/* <div className="h-[30rem]">
@@ -990,7 +989,6 @@ const PaymentForm = () => {
                               src={uploadInsuranceDetail?.url}
                               height={400}
                               width={400}
-                              // alt="profile"
                             />
                           </div>
                         </div>
@@ -1051,7 +1049,7 @@ const PaymentForm = () => {
                     />
                   </div>
 
-                  <div className="flex justify-between p-2 mt-24 ">
+                  <div className="flex justify-between p-2 mt-4 ">
                     <div>Vehicle Price</div>
                     <div>
                       $
