@@ -638,7 +638,6 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
             {" "}
             <div id="styled-select">
               <select
-                // size={6}
                 name="pickuplocation"
                 className=""
                 onChange={handleFormFields}
