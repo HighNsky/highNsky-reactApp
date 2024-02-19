@@ -17,7 +17,6 @@ import test from "../../assets/images/testimonail.jpg";
 import left from "../../assets/images/testimonialleft.png";
 import right from "../../assets/images/testimonailright.png";
 // import required modules
-// import { Navigation } from "swiper";
 import male1 from "../../assets/images/male.png";
 
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
