@@ -6,7 +6,8 @@ import { IoIosStarHalf } from "react-icons/io";
 import { IoIosStarOutline } from "react-icons/io";
 
 export const StarRating = ({ starCount }: any) => {
-  let newArr = [];
+  let newArr:any = [];
+
   newArr.length = 5;
 
   function isInt(starCount: any) {
@@ -51,8 +52,8 @@ export const StarRating = ({ starCount }: any) => {
 
   return (
     <div className="flex gap-2  justify-center p-4">
-      {newArr?.map((item) => (
-        <div className="div-block-312798">{item?.star}</div>
+      {newArr?.map((item:any , idx:any) => (
+        <div className="div-block-312798"  key={idx} >{item?.star}</div>
       ))}
      
     </div>
