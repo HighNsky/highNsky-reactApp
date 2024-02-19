@@ -42,9 +42,9 @@ const Esignatue = ({
           >
             Clear Signature
           </div>
-          {/* {sigImage ? (
+          {sigImage ? (
             ""
-          ) : ( */}
+          ) : (
           <div
             onClick={() => {
               if (sigImage) {
@@ -63,7 +63,7 @@ const Esignatue = ({
           >
             Save Signature
           </div>
-          {/* // )} */}
+         )}
         </div>
       </div>
     </div>
