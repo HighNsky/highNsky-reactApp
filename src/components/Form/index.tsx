@@ -647,7 +647,7 @@ const BookingForm = ({ isAlert, setIsAlert }: any) => {
                   Select your option
                 </option>
                 {locationArr?.data?.map((item: any) => (
-                  <option key={item?._id} value={item?._id}>
+                  <option key={item?._id}  >
                     <div>{item?.addressLine1}</div> <br />,
                     <div> {item?.addressLine2}</div>
                     <br />,<div> {item?.city}</div>
