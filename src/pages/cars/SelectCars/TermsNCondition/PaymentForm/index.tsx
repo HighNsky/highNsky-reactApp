@@ -29,7 +29,7 @@ import Button from "@/components/Button";
 import { Loading } from "@/components/Loading";
 import Esignature from "@/components/Esignature";
 import Alert from "@/components/Alert";
-
+import Modal from "@/components/Modal";
 
 const PaymentForm = () => {
   const [isAlert, setIsAlert] = useState<any>({ type: "", msg: "" });
@@ -77,6 +77,10 @@ const PaymentForm = () => {
   const [uploadInsuranceDetail, setUploadInsuranceDetail] =
     React.useState<any>();
   const [uploadLicDetail, setUploadLicDetail] = React.useState<any>();
+  const [uploadLicDocFileType, setUploadLicDocFileType] = useState("");
+
+  const [teleDetailDocFileType, setTeleDetailDocFileType] = useState("");
+  const [insuranceDocFileType, setinsuranceDocFileType] = useState("");
 
   const [uploadRentalDetail, setUploadRentalDetail] = React.useState<any>();
   const [uploadTeleDetail, setUploadTelelDetail] = React.useState<any>();
@@ -213,7 +217,7 @@ const PaymentForm = () => {
   });
   const handleFormFields = (e: any) => {
     const { value, name } = e.target;
-    console.log('first', value, name)
+    console.log("first", value, name);
     if (name === "address") {
       setFormFields((curr: any) => ({ ...curr, [name]: value }));
     } else {
@@ -377,8 +381,7 @@ const PaymentForm = () => {
     if (signatureRef?.current?._sigPad?._data?.length >= 1) {
       signatureImage = signatureRef?.current?.toDataURL();
       setSigImage(signatureImage);
-    } 
-    else {
+    } else {
       setSigImage("");
     }
   };
@@ -547,6 +550,7 @@ const PaymentForm = () => {
         // totalP === true
       ) {
         setLoading(true);
+        console.log("formData", formData);
         bookRide
           .mutateAsync({
             body: formData,
@@ -633,7 +637,7 @@ const PaymentForm = () => {
         </AnimatePresence>
       </div> */}
 
-<div className=" lg:h-[28rem] xxxs:h-[25rem] xxs:h-[15rem] md:h-[25rem]">
+      <div className=" lg:h-[28rem] xxxs:h-[25rem] xxs:h-[15rem] md:h-[25rem]">
         {/* <Layout /> */}
         <div
           style={{
@@ -657,8 +661,7 @@ const PaymentForm = () => {
             style={{ background: "rgb(0 0 0 / 44%)" }}
           >
             <div className="bred-head text-[white]   flex justify-center items-center lg:pt-[6rem] sm:pt-[3rem] ">
-            Checkout
-
+              Checkout
             </div>
             <div className="flex">
               <div
@@ -675,14 +678,13 @@ const PaymentForm = () => {
                 }}
                 className="text-[#efb837] text-span-23"
               >
-                /               Checkout
-
+                / Checkout
               </div>
             </div>
             {/* </motion.div> */}
           </div>
         </div>
-        </div>
+      </div>
       <div className=" py-10  px-4 ">
         <div className=" xxxs:text-3xl md:text-4xl text-center lg:pt-8 md:pt-0 lg:pb-8 md:pb-8 sm:pt-7 sm:pb-7 xxxs:pt-0 xxxs:pb-4 font-serif font-semibold">
           Booking Payment
@@ -821,7 +823,9 @@ const PaymentForm = () => {
                       label=" Lic. No*"
                       name="licNo"
                       className="bg-[#d6d6d6] inputW"
-                      onChange={handleFormFields}
+                      onChange={(e: any) => {
+                        handleFormFields(e);
+                      }}
                       errorMessage={formErrors?.licNo}
                       type="number"
                     />
@@ -849,7 +853,7 @@ const PaymentForm = () => {
                       </div>
                     )} */}
 
-                    {previewImage?.[0]?.uploadLicDoc && (
+                    {/* {previewImage?.[0]?.uploadLicDoc && (
                       <div
                         onClick={() =>
                           setPreviewImage([{ teleDetailDoc: false }])
@@ -871,8 +875,14 @@ const PaymentForm = () => {
                           </div>
                         </div>
                       </div>
-                    )}
-
+                    )} */}
+                    <Modal
+                      isOpen={previewImage?.[0]?.uploadLicDoc}
+                      url={uploadLicDetail?.url}
+                      fileType={uploadLicDocFileType}
+                      setPreviewImage={setPreviewImage}
+                      previewImage={previewImage}
+                    />
                     <div className="flex ">
                       <div className="w-full">
                         <Input
@@ -883,7 +893,13 @@ const PaymentForm = () => {
                           name="uploadLic"
                           value={deleteFileUploadLic?.[0]?.deleteData}
                           type="file"
-                          onChange={handleFormFieldsFile}
+                          // onChange={handleFormFieldsFile}
+                          onChange={(e: any) => {
+                            handleFormFieldsFile(e);
+                            setUploadLicDocFileType(
+                              e?.target?.files[0]?.type?.split("/").pop()
+                            );
+                          }}
                           errorMessage={formErrors?.uploadLic}
                         />
                       </div>
@@ -913,7 +929,7 @@ const PaymentForm = () => {
                       </div>
                     </div>
 
-                    {previewImage?.[0]?.teleDetailDoc && (
+                    {/* {previewImage?.[0]?.teleDetailDoc && (
                       <div
                         onClick={() =>
                           setPreviewImage([{ teleDetailDoc: false }])
@@ -934,8 +950,14 @@ const PaymentForm = () => {
                           </div>
                         </div>
                       </div>
-                    )}
-
+                    )} */}
+                    <Modal
+                      isOpen={previewImage?.[0]?.teleDetailDoc}
+                      url={uploadTeleDetail?.url}
+                      fileType={teleDetailDocFileType}
+                      setPreviewImage={setPreviewImage}
+                      previewImage={previewImage}
+                    />
                     <div className="flex">
                       <div className="w-full">
                         <Input
@@ -945,7 +967,13 @@ const PaymentForm = () => {
                           name="telephoneBill"
                           value={deleteFileTele?.[0]?.deleteData}
                           type="file"
-                          onChange={handleFormFieldsFile}
+                          // onChange={handleFormFieldsFile}
+                          onChange={(e: any) => {
+                            handleFormFieldsFile(e);
+                            setTeleDetailDocFileType(
+                              e?.target?.files[0]?.type?.split("/").pop()
+                            );
+                          }}
                           errorMessage={formErrors?.telephoneBill}
                         />
                       </div>
@@ -973,7 +1001,7 @@ const PaymentForm = () => {
                         )}{" "}
                       </div>
                     </div>
-                    {previewImage?.[0]?.insuranceDoc && (
+                    {/* {previewImage?.[0]?.insuranceDoc && (
                       <div
                         onClick={() =>
                           setPreviewImage([{ insuranceDoc: false }])
@@ -993,8 +1021,14 @@ const PaymentForm = () => {
                           </div>
                         </div>
                       </div>
-                    )}
-
+                    )} */}
+                    <Modal
+                      isOpen={previewImage?.[0]?.insuranceDoc}
+                      url={uploadInsuranceDetail?.url}
+                      fileType={insuranceDocFileType}
+                      setPreviewImage={setPreviewImage}
+                      previewImage={previewImage}
+                    />
                     <div className="flex">
                       <div className="w-full">
                         <Input
@@ -1003,7 +1037,13 @@ const PaymentForm = () => {
                           label=" Upload Other Documents*"
                           name="uploadInsurance"
                           type="file"
-                          onChange={handleFormFieldsFile}
+                          // onChange={handleFormFieldsFile}
+                          onChange={(e: any) => {
+                            handleFormFieldsFile(e);
+                            setinsuranceDocFileType(
+                              e?.target?.files[0]?.type?.split("/").pop()
+                            );
+                          }}
                           value={deleteFileInsurance?.[0]?.deleteData}
                           errorMessage={formErrors?.uploadInsurance} // electronicSignature come from validateFelids () method
                         />
