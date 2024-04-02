@@ -75,7 +75,6 @@ const MyRides = () => {
           setLoading(false);
         });
     }
-    
   }, [rideid]);
 
   const Handlediv = (id: any) => {
@@ -101,8 +100,7 @@ const MyRides = () => {
         <div>
           {loading ? (
             <div className=" bg-transparent z-[1] absolute w-[100%] h-screen">
-              <div className="flex justify-center bg-white h-screen">
-              </div>
+              <div className="flex justify-center bg-white h-screen"></div>
             </div>
           ) : (
             <div>
@@ -115,7 +113,8 @@ const MyRides = () => {
                       {myRides?.vehicleDetails?.vehicleName}
                     </h5>{" "}
                     {myRides?.vehicleDetails?.vehicleImage?.url ? (
-                      <img style={{objectFit:'contain'}}
+                      <img
+                        style={{ objectFit: "contain" }}
                         className="h-[320px] w-[500px]  p-5"
                         src={myRides?.vehicleDetails?.vehicleImage?.url}
                         alt=""

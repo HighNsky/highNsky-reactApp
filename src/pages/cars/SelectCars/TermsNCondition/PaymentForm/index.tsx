@@ -81,7 +81,12 @@ const PaymentForm = () => {
 
   const [teleDetailDocFileType, setTeleDetailDocFileType] = useState("");
   const [insuranceDocFileType, setinsuranceDocFileType] = useState("");
-
+  console.log(
+    "fdasdasdirst",
+    uploadLicDocFileType,
+    teleDetailDocFileType,
+    insuranceDocFileType
+  );
   const [uploadRentalDetail, setUploadRentalDetail] = React.useState<any>();
   const [uploadTeleDetail, setUploadTelelDetail] = React.useState<any>();
   const [sigImage, setSigImage] = useState("");
@@ -613,7 +618,18 @@ const PaymentForm = () => {
       />
     </div>
   );
-
+  //function for download pdf function
+  const handleDownload = (url: any) => {
+    // Assuming your PDF file URL
+    const pdfUrl = url;
+    // Creating a hidden anchor element
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    // Setting the download attribute and filename
+    link.download = "your_pdf_filename.pdf";
+    // Simulating a click to trigger the download
+    link.click();
+  };
   return (
     <BasicLayout>
       {/* <div className="h-[30rem]">
@@ -876,13 +892,16 @@ const PaymentForm = () => {
                         </div>
                       </div>
                     )} */}
-                    <Modal
-                      isOpen={previewImage?.[0]?.uploadLicDoc}
-                      url={uploadLicDetail?.url}
-                      fileType={uploadLicDocFileType}
-                      setPreviewImage={setPreviewImage}
-                      previewImage={previewImage}
-                    />
+                    {uploadLicDocFileType !== "pdf" &&
+                      previewImage?.[0]?.uploadLicDoc && (
+                        <Modal
+                          isOpen={previewImage?.[0]?.uploadLicDoc}
+                          url={uploadLicDetail?.url}
+                          fileType={uploadLicDocFileType}
+                          setPreviewImage={setPreviewImage}
+                          previewImage={previewImage}
+                        />
+                      )}
                     <div className="flex ">
                       <div className="w-full">
                         <Input
@@ -908,12 +927,23 @@ const PaymentForm = () => {
                           <div className="w-full">
                             <div
                               className=" pl-4"
-                              onClick={() =>
-                                setPreviewImage([{ uploadLicDoc: true }])
-                              }
+                              // onClick={() =>
+                              //   setPreviewImage([{ uploadLicDoc: true }])
+                              // }
                             >
-                              {" "}
-                              <AiOutlineEye />
+                              {uploadLicDocFileType !== "pdf" ? (
+                                <AiOutlineEye
+                                  onClick={() =>
+                                    setPreviewImage([{ uploadLicDoc: true }])
+                                  }
+                                />
+                              ) : (
+                                <AiOutlineEye
+                                  onClick={() =>
+                                    handleDownload(uploadLicDetail?.url)
+                                  }
+                                />
+                              )}
                             </div>
                             <button
                               className="pl-4"
@@ -951,13 +981,17 @@ const PaymentForm = () => {
                         </div>
                       </div>
                     )} */}
-                    <Modal
-                      isOpen={previewImage?.[0]?.teleDetailDoc}
-                      url={uploadTeleDetail?.url}
-                      fileType={teleDetailDocFileType}
-                      setPreviewImage={setPreviewImage}
-                      previewImage={previewImage}
-                    />
+
+                    {teleDetailDocFileType !== "pdf" &&
+                      previewImage?.[0]?.teleDetailDoc && (
+                        <Modal
+                          isOpen={previewImage?.[0]?.teleDetailDoc}
+                          url={uploadTeleDetail?.url}
+                          fileType={teleDetailDocFileType}
+                          setPreviewImage={setPreviewImage}
+                          previewImage={previewImage}
+                        />
+                      )}
                     <div className="flex">
                       <div className="w-full">
                         <Input
@@ -982,11 +1016,24 @@ const PaymentForm = () => {
                           <div>
                             <div
                               className=" pl-4"
-                              onClick={() =>
-                                setPreviewImage([{ teleDetailDoc: true }])
-                              }
+                              // onClick={() =>
+                              //   setPreviewImage([{ teleDetailDoc: true }])
+                              // }
                             >
-                              <AiOutlineEye />
+                              {teleDetailDocFileType !== "pdf" ? (
+                                <AiOutlineEye
+                                  onClick={() =>
+                                    setPreviewImage([{ teleDetailDoc: true }])
+                                  }
+                                />
+                              ) : (
+                                <AiOutlineEye
+                                  onClick={() =>
+                                    handleDownload(uploadTeleDetail?.url)
+                                  }
+                                />
+                              )}
+                              {/* <AiOutlineEye /> */}
                             </div>
                             <button
                               className="pl-4"
@@ -1022,13 +1069,15 @@ const PaymentForm = () => {
                         </div>
                       </div>
                     )} */}
+                    {insuranceDocFileType !== "pdf" &&
+                      previewImage?.[0]?.insuranceDoc && (
                     <Modal
                       isOpen={previewImage?.[0]?.insuranceDoc}
                       url={uploadInsuranceDetail?.url}
                       fileType={insuranceDocFileType}
                       setPreviewImage={setPreviewImage}
                       previewImage={previewImage}
-                    />
+                    />)}
                     <div className="flex">
                       <div className="w-full">
                         <Input
@@ -1054,12 +1103,25 @@ const PaymentForm = () => {
                           <div>
                             <div
                               className=" pl-4"
-                              onClick={() =>
-                                setPreviewImage([{ insuranceDoc: true }])
-                              }
+                              // onClick={() =>
+                              //   setPreviewImage([{ insuranceDoc: true }])
+                              // }
                             >
                               {" "}
-                              <AiOutlineEye />
+                              {/* <AiOutlineEye /> */}
+                              {insuranceDocFileType !== "pdf" ? (
+                                <AiOutlineEye
+                                onClick={() =>
+                                  setPreviewImage([{ insuranceDoc: true }])
+                                }
+                                />
+                              ) : (
+                                <AiOutlineEye
+                                  onClick={() =>
+                                    handleDownload(uploadInsuranceDetail?.url)
+                                  }
+                                />
+                              )}
                             </div>
                             <button
                               className=" pl-4"

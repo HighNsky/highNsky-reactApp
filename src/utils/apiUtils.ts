@@ -8,10 +8,10 @@ import { Cookies } from "react-cookie";
 export const cookies = new Cookies();
 
 export const hostname = () => {
-  // let hostUrl = "http://localhost:5001/api";
+  let hostUrl = "http://localhost:5001/api";
   // let hostUrl = "http://192.168.0.242:5001/api";
 
-  let hostUrl = "https://api-test.highnsky.com.au/api";
+  // let hostUrl = "https://api-test.highnsky.com.au/api";
   return hostUrl;
 };
 const hostUrl = hostname();

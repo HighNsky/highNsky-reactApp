@@ -1,58 +1,103 @@
-import React from 'react'
+import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import Styles from "./index.module.css";
+// import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
+// import "@cyntler/react-doc-viewer/index.css";
 
-const Modal = ({ isOpen, onClose, url, fileType , setPreviewImage , previewImage }: any) => {
-    if (!isOpen) return null;
-
-    return (
-      <div className="fixed z-10 inset-0 overflow-y-auto ">
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center ">
-          <div className="fixed inset-0 transition-opacity " aria-hidden="true">
-            <div className="absolute inset-0 bg-gray-500 opacity-75 "></div>
-          </div>
-          <span
-            className="  hidden sm:inline-block sm:align-middle sm:h-screen"
-            aria-hidden="true"
-          >
-            &#8203;
-          </span>
-          <div className=" inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[800px] sm:w-full">
-            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              {/* Modal content */}
-              <div>
-                {fileType === "pdf" ? (
-                  <div className="h-[500px]">
-                    <iframe
-                      src={url}
-                      height="100%"
-                      width="100%"
-                      allowFullScreen
-                    />
-                  </div>
-                ) : (
-                  <div className="h-[500px] w-[100%] overflow-y-scroll">
-                    <img
-                      src={url}
-                      alt="image"
-                      width={"100%"}
-                      height={"100%"}
-                    />
-                  </div>
-                )}
-              </div>
+const Modal = ({
+  isOpen,
+  onClose,
+  url,
+  fileType,
+  setPreviewImage,
+  previewImage,
+}: any) => {
+  if (!isOpen) return null;
+  console.log("url123", url);
+  return (
+    <>
+      {/* <div className='fixed inset-0 z-50 flex items-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none  '>
+      <div className=' relative  my-6 mx-4 max-w-3xl md:mx-8 lg:mx-auto   '>
+        <div className='relative flex flex-col  border-2   bg-gray-100 bg-white shadow-lg outline-none focus:outline-none '>
+          <div className='flex justify-between border-b'>
+            <div className='mt-2 ml-8    px-10'>
+              <p className='my-3  text-xl font-semibold  uppercase '>
+                order Details
+              </p>
             </div>
-            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button
-                type="button"
-                onClick={() => setPreviewImage([{ electronicDoc: false }])}
-                className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm"
-              >
-                Close
-              </button>
+            <div className='p-4'>
+              <AiOutlineClose
+                className='h-10'
+                onClick={() => setPreviewImage(false)}
+              />
+            </div>
+          </div>
+
+          <div
+            
+          >
+            
+             
+                <div className=''  >
+                   
+                    <div className='p-16'>
+                     fghfghfghfgh
+                    </div>
+                 
+                </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> */}
+
+      <div className={Styles["modalBackground"]}>
+        <div className={Styles["modalContainer"]}>
+          <div
+            className={Styles["titleCloseBtn"]}
+            title="Close button"
+            onClick={() => setPreviewImage(false)}
+          >
+            <AiOutlineClose
+              style={{ height: "20px", width: "20px", strokeWidth: "70px" }}
+            />
+          </div>
+          <div className={Styles["title"]}>
+            <div>
+              {fileType === "pdf" ? (
+                <div className="">
+                  {/* <a href={url}>fghfghfghfghfg</a> */}
+                  <></>
+                  {/* <iframe
+                    src={url}
+                    // allowFullScreen
+                    itemType="application/pdf"
+                    frameBorder={0}
+                    style={{
+                      display: "initial",
+                      height: "70vh",
+                      width: "100%",
+                      border: "none",
+                    }}
+                  /> */}
+                </div>
+              ) : (
+                <div className="h-[100%] flex justify-center w-[100%] mt-5">
+                  <img
+                    src={url}
+                    alt="image"
+                    width={"80%"}
+                    height={"80%"}
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-    );
-  };
+    </>
+  );
+};
 
-export default Modal
+export default Modal;
